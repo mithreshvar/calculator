@@ -3,10 +3,15 @@ import Collapsible from 'react-collapsible';
 import { HiOutlineChevronDown, HiOutlineChevronUp } from "react-icons/hi";
 
 
-export default function CollapsibleBox({ heading, content }) {
+export default function CollapsibleBox({ heading, headingBold = false, content, last = false }) {
+  let weight = 500;
+  if (headingBold) {
+    weight = 600;
+  }
+  console.log(weight);
   const style = {
     cursor: 'pointer',
-    fontWeight: '600',
+    fontWeight: weight,
     display: 'flex',
     justifyContent: 'space-between',
     margin: '0.5rem',
@@ -14,15 +19,17 @@ export default function CollapsibleBox({ heading, content }) {
   return (
     <>
       <Collapsible
-        trigger={[heading, <HiOutlineChevronDown style={{ color: '#005CFF', fontSize: '20px !important' }} />]}
-        triggerWhenOpen={[heading, <HiOutlineChevronUp style={{ color: '#005CFF', fontSize: '20px' }} />]}
+        trigger={[heading, <HiOutlineChevronDown style={{ flexShrink: 0, color: '#005CFF', width: '18px', height: '18px' }} />]}
+        triggerWhenOpen={[heading, <HiOutlineChevronUp style={{ flexShrink: 0, color: '#005CFF', width: '18px', height: '18px' }} />]}
         triggerStyle={style}
       >
         {content}
       </Collapsible >
 
       {/* line */}
-      <div style={{ width: 100 + '%', height: '0px', border: '0.5px solid #C4C4C4', opacity: 1, marginTop: '0.5rem', }}></div>
+
+      {last ? <div className='mb-1'></div> : <div style={{ width: 100 + '%', height: '0px', border: '0.5px solid #C4C4C4', opacity: 1, marginTop: '0.5rem', }}></div>}
+
     </>
   );
 }

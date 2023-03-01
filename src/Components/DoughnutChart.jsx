@@ -1,7 +1,7 @@
 import React from 'react'
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 
 function DoughnutChart({ initialInvestment, finalInvestment, dependency }) {
 
@@ -9,7 +9,7 @@ function DoughnutChart({ initialInvestment, finalInvestment, dependency }) {
     chart: {
       type: 'pie',
       backgroundColor: 'transparent',
-      height: '215px',
+      height: '208px',
     },
     title: {
       text: '',

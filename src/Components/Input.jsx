@@ -24,7 +24,7 @@ export default function Input({ id, type = '', min = 0, max, step = 1, value, se
     };
 
     return (
-        <div className={'w-full flex justify-between flex-warp ' + `${styles.inputBox}`}>
+        <div className={styles.inputBox}>
 
             <input
                 type="range"
@@ -34,7 +34,7 @@ export default function Input({ id, type = '', min = 0, max, step = 1, value, se
                 value={value}
                 id={id}
                 onChange={handleValue}
-                className={' accent-[#00D382] bg-transparent '}
+                className={' accent-[#00D382] bg-transparent my-4 '}
             />
 
             <input

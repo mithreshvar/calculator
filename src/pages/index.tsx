@@ -1,11 +1,11 @@
 import Head from "next/head";
 import Image from "next/image";
 import { useState } from "react";
-// import styles from '@/styles/Home.module.css';
 import Input from "../Components/Input.jsx";
 import LineChart from "../Components/LineChart.jsx";
 import DoughnutChart from "@/Components/DoughnutChart.jsx";
 import CollapsibleBox from "@/Components/CollapsibleBox.jsx";
+import RelatedCalculator from "@/Components/RelatedCalculator.jsx";
 
 import { FaChartPie, FaChartLine } from "react-icons/fa";
 import { MdOutlineShowChart } from "react-icons/md";
@@ -102,7 +102,11 @@ export default function Home() {
         </div>
 
         {/* Calculator and side pannel */}
-        <div className={"flex flex-wrap w-full mt-[50px] justify-between"}>
+        <div
+          className={
+            "flex flex-wrap w-full max-h-[403px] mt-[50px] justify-between"
+          }
+        >
           {/* Calculator and graph (WRAPPER) */}
           <div
             className={
@@ -112,7 +116,11 @@ export default function Home() {
             {/* Calculator */}
             <div className={"text-left text-lg w-[50%] "}>
               {/* Input box wrapper */}
-              <div className={"flex-col justify-evenly font-medium "}>
+              <div
+                className={
+                  "flex-col justify-evenly font-medium   space-y-[20px]"
+                }
+              >
                 {/* Input box */}
                 <div>
                   {/*Initial investment block*/}
@@ -144,7 +152,7 @@ export default function Home() {
 
                 <div>
                   {/*Duration of investment block*/}
-                  <div>Duration of investment(Years)</div>
+                  <div>Duration of investment</div>
                   <Input
                     id="years"
                     min={1}
@@ -157,7 +165,9 @@ export default function Home() {
 
               {/* Control Box Wrapper */}
               <div
-                className={"flex flex-warp justify-center m-4 cursor-pointer"}
+                className={
+                  "flex flex-warp justify-center mt-[40px] cursor-pointer "
+                }
               >
                 {/* Control boxes */}
                 <div
@@ -221,24 +231,56 @@ export default function Home() {
               {/* Charts/Graph */}
               <div className={" relative object-right-top"}>
                 {isLineChart ? (
-                  <LineChart points={graphPoints} />
+                  <>
+                    <LineChart points={graphPoints} />
+                    <div className={"mb-3"}>
+                      Investment of{" "}
+                      <span className={"font-semibold"}>
+                        Rs.{initialAmount.toLocaleString("en-In")}
+                      </span>{" "}
+                      grew to{" "}
+                      <span className={"font-semibold"}>
+                        Rs.{finalAmount.toLocaleString("en-In")}
+                      </span>{" "}
+                      at the end of{" "}
+                      <span className={"font-semibold"}>{years}</span> years.
+                    </div>
+                  </>
                 ) : (
-                  <DoughnutChart
-                    initialInvestment={initialAmount}
-                    finalInvestment={finalAmount}
-                    dependency={output}
-                  />
+                  <>
+                    <DoughnutChart
+                      initialInvestment={initialAmount}
+                      finalInvestment={finalAmount}
+                      dependency={output}
+                    />
+                    <div>
+                      <div className={"flex justify-between font-medium mb-3"}>
+                        <div>Invested</div>
+                        <div className={"font-semibold"}>
+                          {initialAmount.toLocaleString("en-In")}
+                        </div>
+                      </div>
+                      <div className={"flex justify-between font-medium mb-3"}>
+                        <div>Gains</div>
+                        <div className={"font-semibold"}>
+                          {(finalAmount - initialAmount).toLocaleString(
+                            "en-In"
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                  </>
                 )}
               </div>
 
               {/* Output box */}
               <div className={"flex-col "}>
                 {/*CARG output*/}
-                <div className={"flex justify-between font-medium"}>
+                <div className={"flex justify-between font-medium mb-3"}>
                   <div id="CAGR_output">CAGR</div>
                   <div className={"font-semibold"}>{output}%</div>
                 </div>
-                <div className={"flex justify-between"}>
+                <div className={"flex justify-between "}>
                   <div id="absoluteReturns">Absolute Returns</div>
                   <div className={"font-semibold"}>{absoluteReturns}%</div>
                 </div>
@@ -249,7 +291,7 @@ export default function Home() {
           {/* Side Pannel */}
           <div
             className={
-              " w-[23%] px-[20px] py-[22px] border-2 border-white rounded-[30px] shadow-md shadow-[#505C6227] bg-white bg-opacity-40 backdrop-blur-[30px] overflow-y-scroll "
+              " w-[23%] px-[20px] py-[22px] max-h-[403px] border-2 border-white rounded-[30px] shadow-md shadow-[#505C6227] bg-white bg-opacity-40 backdrop-blur-[30px] overflow-y-scroll "
             }
           >
             <div className={"font-bold "}>How to use this calculator?</div>
@@ -270,6 +312,7 @@ export default function Home() {
               content={
                 "CAGR lets you know the compounded returns you earn on an annual basis irrespective of the individual yearly performances of the fund. So you can compare the performance of different investments."
               }
+              last={true}
             />
           </div>
         </div>
@@ -281,6 +324,7 @@ export default function Home() {
         >
           <CollapsibleBox
             heading={"What is CAGR?"}
+            headingBold={true}
             content={
               "CAGR stands for Compound Annual Growth Rate, which is a commonly used financial metric to measure the average growth rate of an investment over a specified period of time. It's calculated as the average rate of return that would have to be compounded annually to reach the final value from the initial value over the given time period."
             }
@@ -288,6 +332,7 @@ export default function Home() {
 
           <CollapsibleBox
             heading={"Why should I calculate CAGR?"}
+            headingBold={true}
             content={
               "CAGR is expressed as a percentage and it is useful in comparing the growth of different investments. It provides a more accurate picture of the growth of an investment than simple average returns, as it takes into account the compounding effect of reinvested returns. CAGR provides a standardised way to compare the performance of different investments over the same time period, which makes it easier to determine which investments have performed better or worse."
             }
@@ -295,6 +340,7 @@ export default function Home() {
 
           <CollapsibleBox
             heading={"How does the calculator work?"}
+            headingBold={true}
             content={
               <>
                 <div>It uses the following logic</div>
@@ -311,6 +357,7 @@ export default function Home() {
 
           <CollapsibleBox
             heading={"What are the advantages of calculating CAGR?"}
+            headingBold={true}
             content={
               <ul>
                 <li>
@@ -338,14 +385,44 @@ export default function Home() {
 
           <CollapsibleBox
             heading={"How to use CAGR calculator?"}
+            headingBold={true}
             content={
               "FundsIndia CAGR calculator is an intuitive tool that calculates the CAGR easily. Just plug in the Initial, Final Investment values along with the tenure of the investment and FundsIndia Calculator will give you the accurate CAGR of your investment."
             }
+            last={true}
           />
         </div>
 
-        <div className={"mt-[30px]"}>
-          <div className={"font-bold mb-[14px]"}>Related Calculators</div>
+        <div className={"my-[30px] "}>
+          <div className={"font-bold mb-[14px] text-[#464143]"}>
+            Related Calculators
+          </div>
+
+          <div className={"overflow-x-scroll flex -mx-20  "}>
+            <RelatedCalculator
+              name={"SWP Calculator"}
+              path={"#"}
+              first={true}
+            />
+
+            <RelatedCalculator name={"SWP Calculator"} path={"#"} />
+
+            <RelatedCalculator name={"SWP Calculator"} path={"#"} />
+
+            <RelatedCalculator name={"SWP Calculator"} path={"#"} />
+
+            <RelatedCalculator name={"SWP Calculator"} path={"#"} />
+
+            <RelatedCalculator name={"SWP Calculator"} path={"#"} />
+
+            <RelatedCalculator name={"SWP Calculator"} path={"#"} />
+
+            <RelatedCalculator name={"SWP Calculator"} path={"#"} />
+
+            <RelatedCalculator name={"SWP Calculator"} path={"#"} />
+
+            <RelatedCalculator name={"SWP Calculator"} path={"#"} />
+          </div>
         </div>
       </main>
     </>

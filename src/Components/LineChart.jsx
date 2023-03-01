@@ -1,6 +1,6 @@
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 
 export default function Chart({ points }) {
 
