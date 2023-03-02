@@ -8,7 +8,6 @@ export default function CollapsibleBox({ heading, headingBold = false, content, 
   if (headingBold) {
     weight = 600;
   }
-  console.log(weight);
   const style = {
     cursor: 'pointer',
     fontWeight: weight,

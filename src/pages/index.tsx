@@ -104,7 +104,7 @@ export default function Home() {
         {/* Calculator and side pannel */}
         <div
           className={
-            "flex flex-wrap w-full max-h-[403px] mt-[50px] justify-between"
+            "flex flex-wrap w-full xl:max-h-[403px] lg:max-h-[516px] mt-[50px] justify-between"
           }
         >
           {/* Calculator and graph (WRAPPER) */}
@@ -291,7 +291,7 @@ export default function Home() {
           {/* Side Pannel */}
           <div
             className={
-              " w-[23%] px-[20px] py-[22px] max-h-[403px] border-2 border-white rounded-[30px] shadow-md shadow-[#505C6227] bg-white bg-opacity-40 backdrop-blur-[30px] overflow-y-scroll "
+              " xl:max-h-[403px] lg:max-h-[516px]    w-[23%] px-[20px] py-[22px]  border-2 border-white rounded-[30px] shadow-md shadow-[#505C6227] bg-white bg-opacity-40 backdrop-blur-[30px] overflow-y-scroll "
             }
           >
             <div className={"font-bold "}>How to use this calculator?</div>
@@ -317,6 +317,7 @@ export default function Home() {
           </div>
         </div>
 
+        {/* FAQ box */}
         <div
           className={
             " px-[25px] py-[10px] mt-[50px] border-2 border-white rounded-[30px] shadow-md shadow-[#505C6227] bg-white bg-opacity-40 backdrop-blur-[30px]"
@@ -393,6 +394,7 @@ export default function Home() {
           />
         </div>
 
+        {/* Related Calculators */}
         <div className={"my-[30px] "}>
           <div className={"font-bold mb-[14px] text-[#464143]"}>
             Related Calculators
