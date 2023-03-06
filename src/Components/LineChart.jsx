@@ -2,7 +2,26 @@ import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
 import { useState, useEffect } from "react";
 
+/*function widthChange() {
+    console.log(window.innerWidth);
+    if (window.innerWidth <= 640) {
+
+    }
+    else if (window.innerWidth <= 768) {
+
+    }
+    else if (window.innerWidth <= 1024) {
+
+    }
+    else if (window.innerWidth <= 1280) {
+
+    }
+    else if (window.innerWidth <= 1536) {
+        //return ('220px');
+    }
+}*/
 export default function Chart({ points }) {
+
 
     const [options, setOptions] = useState({
         chart: {
@@ -91,6 +110,8 @@ export default function Chart({ points }) {
             })
         })
     }, points);
+
+    // useEffect(widthChange, Window.innerWidth);
 
     return (
 

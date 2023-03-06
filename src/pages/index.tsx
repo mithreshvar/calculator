@@ -16,7 +16,7 @@ export default function Home() {
   const [years, setYears] = useState(10);
 
   let CAGR = 25.89;
-  const [absoluteReturns, setAbsoluteReturns] = useState(9000);
+  const [absoluteReturns, setAbsoluteReturns] = useState(900);
   const [output, setOutput] = useState("25.89");
 
   const [isLineChart, setCheck] = useState(true);
@@ -33,7 +33,9 @@ export default function Home() {
     } else {
       setOutput(CAGR.toFixed(2));
     }
-    setAbsoluteReturns(Number((finalAmount - initialAmount) / 100));
+    setAbsoluteReturns(
+      Number(((finalAmount - initialAmount) * 100) / initialAmount)
+    );
     calculateGraphPoints();
   }
 
@@ -73,21 +75,25 @@ export default function Home() {
 
       <main
         className={
-          "relative p-20 w-full overflow-x-hidden flex-col justify-between text-neutral-700 "
+          "relative [@media(max-width:470px)]:p-5 [@media(max-width:1280px)]:p-10 xl:p-20 w-full overflow-x-hidden flex-col justify-between text-neutral-700 "
         }
       >
         <div>
           {/* Heading */}
           <div
             className={
-              "text-zinc-900 text-5xl font-semibold text-center leading-tight"
+              "text-zinc-900 text-5xl font-semibold text-center leading-tight  [@media(max-width:300px)]:text-3xl"
             }
           >
             <span className={"text-blue-600"}>Compound Annual Growth Rate</span>{" "}
             Calculator
           </div>
           {/* Subheading */}
-          <p className={"text-neutral-700 mt-3 text-lg text-center"}>
+          <p
+            className={
+              "text-neutral-700 mt-3 text-lg text-center  [@media(max-width:300px)]:text-sm lg:text-lg"
+            }
+          >
             CAGR stands for Compound Annual Growth Rate, which is a commonly
             used financial metric to measure the average growth rate of an
             investment over a specified period of time. It’s calculated as the
@@ -104,21 +110,21 @@ export default function Home() {
         {/* Calculator and side pannel */}
         <div
           className={
-            "flex flex-wrap w-full xl:max-h-[403px] lg:max-h-[516px] mt-[50px] justify-between"
+            "xl:flex max-xl:flex-col flex-wrap w-full xl:max-h-[403px]  mt-[50px] [@media(max-width:400px)]:mt-[20px] justify-between"
           }
         >
           {/* Calculator and graph (WRAPPER) */}
           <div
             className={
-              "flex p-[30px] w-[75%] border-2 border-white rounded-[30px] shadow-md shadow-[#505C6227] bg-white bg-opacity-40 backdrop-blur-[30px]"
+              "lg:flex max-md:flex-col p-[30px] xl:w-[75%]  max-lg:space-y-7  border-2 border-white rounded-[30px] shadow-md shadow-[#505C6227] bg-white bg-opacity-40 backdrop-blur-[30px]"
             }
           >
             {/* Calculator */}
-            <div className={"text-left text-lg w-[50%] "}>
+            <div className={"text-left text-lg lg:w-[50%] "}>
               {/* Input box wrapper */}
               <div
                 className={
-                  "flex-col justify-evenly font-medium   space-y-[20px]"
+                  "flex-col justify-evenly font-medium max-sm:space-y-3  xl:space-y-[10px] lg:space-y-[15px]"
                 }
               >
                 {/* Input box */}
@@ -177,7 +183,7 @@ export default function Home() {
                 >
                   <div
                     className={
-                      "text-center text-white font-semibold rounded-[35px] p-[0.3rem]   shadow-lg shadow-[#36b3665d] bg-[#00d382]"
+                      "text-center text-white font-semibold rounded-[35px] p-[0.4rem]   shadow-lg shadow-[#36b3665d] bg-[#00d382]"
                     }
                     onClick={calculate}
                   >
@@ -190,12 +196,12 @@ export default function Home() {
             {/* vertical line */}
             <div
               className={
-                " -my-4 mx-5 w-0 rounded-[50px] border-2 border-solid border-[#7070701A]"
+                " -my-4 mx-5 w-0  max-lg:h-0 max-lg:w-auto max-lg:-mx-2   rounded-[50px] border-2 border-solid border-[#7070701A]"
               }
             ></div>
 
             {/* Charts/Graph wrapper */}
-            <div className={"w-[50%]"}>
+            <div className={"lg:w-[50%]"}>
               {/* Toggle Button */}
               <div
                 className={
@@ -291,7 +297,7 @@ export default function Home() {
           {/* Side Pannel */}
           <div
             className={
-              " xl:max-h-[403px] lg:max-h-[516px]    w-[23%] px-[20px] py-[22px]  border-2 border-white rounded-[30px] shadow-md shadow-[#505C6227] bg-white bg-opacity-40 backdrop-blur-[30px] overflow-y-scroll "
+              " max-h-[inherit]    xl:w-[23%] px-[20px] py-[22px] max-xl:mt-[30px]  border-2 border-white rounded-[30px] shadow-md shadow-[#505C6227] bg-white bg-opacity-40 backdrop-blur-[30px] overflow-y-scroll "
             }
           >
             <div className={"font-bold "}>How to use this calculator?</div>
@@ -402,8 +408,8 @@ export default function Home() {
 
           <div className={"overflow-x-scroll flex -mx-20  "}>
             <RelatedCalculator
-              name={"SWP Calculator"}
-              path={"#"}
+              name={"Gratuity Calculator"}
+              path={"/gratuity"}
               first={true}
             />
 
