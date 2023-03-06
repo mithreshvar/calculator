@@ -9,7 +9,7 @@ export default function Home() {
   const [monthlySalary, setMonthlySalary] = useState(70000);
   const [years, setYears] = useState(10);
 
-  const [output, setOutput] = useState("6,93,956");
+  const [output, setOutput] = useState("4,03,846");
 
   function calculate() {
     setOutput(
