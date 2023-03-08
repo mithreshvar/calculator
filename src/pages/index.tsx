@@ -1,7 +1,7 @@
 import Head from "next/head";
 import Image from "next/image";
 import { useState } from "react";
-import Input from "../Components/Input.jsx";
+import SliderInput from "../Components/SliderInput.jsx";
 import LineChart from "../Components/LineChart.jsx";
 import DoughnutChart from "@/Components/DoughnutChart.jsx";
 import CollapsibleBox from "@/Components/CollapsibleBox.jsx";
@@ -131,7 +131,7 @@ export default function Home() {
                 <div>
                   {/*Initial investment block*/}
                   <div>Initial investment</div>
-                  <Input
+                  <SliderInput
                     id="initialInvestment"
                     type="rupees"
                     min={1000}
@@ -145,7 +145,7 @@ export default function Home() {
                 <div>
                   {/*Final investment block*/}
                   <div>Final investment</div>
-                  <Input
+                  <SliderInput
                     id="finalInvestment"
                     type="rupees"
                     min={1000}
@@ -159,7 +159,7 @@ export default function Home() {
                 <div>
                   {/*Duration of investment block*/}
                   <div>Duration of investment</div>
-                  <Input
+                  <SliderInput
                     id="years"
                     min={1}
                     max={40}

@@ -1,25 +1,42 @@
 import styles from '@/styles/Input.module.css'
+import { useState } from 'react';
 export default function Input({ id, type = '', min = 0, max, step = 1, value, setValue }) {
 
-    const handleValue = (event) => {
 
-        if (event.target.value.charAt(0) == '\u20B9') {
-            event.target.value = event.target.value.slice(1);
+    const [textValue, setTextValue] = useState(((type === 'rupees') ? '\u20B9' : '') + Number(value).toLocaleString("en-In"));
+
+
+    const addSymbol = (event) => {
+        if (!(event.target.value.charAt(0) == '\u20B9')) {
+            event.target.value = ((type === 'rupees') ? '\u20B9' : '') + Number(event.target.value).toLocaleString("en-In");
         }
+    }
 
-        event.target.value = Number(event.target.value.replace(/,/g, ''));
-        //console.log(event.target.value)
-        if (!(isNaN(event.target.value)) && event.target.value > 0 && event.target.value <= max) {
+    const removeSymbol = (event) => {
+        event.target.value = Number(event.target.value.replace(/,|\u20B9|%/g, ''));
+    }
+
+
+    const handleSliderValue = (event) => {
+        setValue(event.target.value);
+        setTextValue(((type === 'rupees') ? '\u20B9' : '') + Number(event.target.value).toLocaleString("en-In"));
+    }
+
+    const handleTextValue = (event) => {
+
+        if ((!(isNaN(event.target.value)) && event.target.value > 0 && event.target.value <= max) || event.target.value == '' || event.target.value == '0') {
             if (event.target.value == "") {
-                setValue(0);
+                setTextValue(0);
             }
             else if (event.target.value.length == 2 && event.target.value.charAt(0) == '0') {
-                setValue(Number(event.target.value.charAt(1)));
+                setTextValue(Number(event.target.value.charAt(1)));
             }
             else {
-                setValue(Number(event.target.value));
+                setTextValue(Number(event.target.value));
             }
         }
+
+        setValue(textValue);
 
     };
 
@@ -34,19 +51,21 @@ export default function Input({ id, type = '', min = 0, max, step = 1, value, se
                         step={step}
                         value={value}
                         id={id}
-                        onChange={handleValue}
+                        onChange={handleSliderValue}
                         className={'my-4 accent-[#00D382] bg-transparent '}
                     />
                 </div>
                 <div className=' sm:w-[39%]   '>
                     <input
                         type="text"
-                        value={((type === 'rupees') ? '\u20B9' : '') + value.toLocaleString("en-In")}
+                        value={textValue}
                         id={`${id}Label`}
                         min={min}
                         max={max}
+                        onBlur={addSymbol}
+                        onFocus={removeSymbol}
                         className={'h-[45px] w-full bg-[#D1E3FF] bg-opacity-[0.39] border-2 border-solid border-[#9BB0D3] rounded-[100px] text-center font-semibold '}
-                        onChange={handleValue}
+                        onChange={handleTextValue}
                     />
                 </div>
             </div>
