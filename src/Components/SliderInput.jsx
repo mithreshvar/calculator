@@ -42,8 +42,8 @@ export default function Input({ id, type = '', min = 0, max, step = 1, value, se
 
     return (
         <div className={styles.inputBox}>
-            <div className={' sm:flex  justify-between flex-warp '}>
-                <div className=' sm:w-[58%]    '>
+            <div className={' flex justify-between flex-warp '}>
+                <div className=' w-[58%]    '>
                     <input
                         type="range"
                         min={min}
@@ -55,7 +55,7 @@ export default function Input({ id, type = '', min = 0, max, step = 1, value, se
                         className={'my-4 accent-[#00D382] bg-transparent '}
                     />
                 </div>
-                <div className=' sm:w-[39%]   '>
+                <div className=' w-[39%]   '>
                     <input
                         type="text"
                         value={textValue}

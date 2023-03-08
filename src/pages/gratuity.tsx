@@ -1,7 +1,7 @@
 import Head from "next/head";
-import Image from "next/image";
 import { useState } from "react";
 import Input from "../Components/SliderInput.jsx";
+import UnorderedList from "../Components/UnorderedList.jsx";
 import CollapsibleBox from "@/Components/CollapsibleBox.jsx";
 import RelatedCalculator from "@/Components/RelatedCalculator.jsx";
 
@@ -80,7 +80,7 @@ export default function Home() {
           {/* Calculator and output (WRAPPER) */}
           <div
             className={
-              "lg:flex max-md:flex-col p-[30px] xl:w-[75%]  max-lg:space-y-7  border-2 border-white rounded-[30px] shadow-md shadow-[#505C6227] bg-white bg-opacity-40 backdrop-blur-[30px]"
+              "lg:flex max-md:flex-col p-[30px] [@media(max-width:400px)]:p-[15px] xl:w-[75%]  max-lg:space-y-7  border-2 border-white rounded-[30px] shadow-md shadow-[#505C6227] bg-white bg-opacity-40 backdrop-blur-[30px]"
             }
           >
             {/* Calculator */}
@@ -186,23 +186,19 @@ export default function Home() {
             <CollapsibleBox
               heading={"Tax implications of gratuity"}
               content={
-                <div>
+                <div className={" space-y-3"}>
                   <div>
                     Gratuity paid by the government to government employees is
                     fully exempt from tax while others are taxed as follows
                   </div>
                   <div>The least of the following is exempt from tax:</div>
-                  <ul>
-                    <li>
-                      Last salary (basic + DA)* number of years of employment*
-                      15/26;
-                    </li>
-                    <li>
-                      Rs. 20 lakhs (which has been hiked from Rs. 10 Lakh as per
-                      the amendment);
-                    </li>
-                    <li>Gratuity Actually received</li>
-                  </ul>
+                  <UnorderedList
+                    content={[
+                      "Last salary (basic + DA)* number of years of employment*15/26;",
+                      "Rs. 20 lakhs (which has been hiked from Rs. 10 Lakh as per the amendment);",
+                      "Gratuity Actually received",
+                    ]}
+                  />
                 </div>
               }
               last={true}

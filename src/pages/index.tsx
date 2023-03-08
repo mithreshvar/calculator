@@ -2,6 +2,7 @@ import Head from "next/head";
 import Image from "next/image";
 import { useState } from "react";
 import SliderInput from "../Components/SliderInput.jsx";
+import UnorderedList from "../Components/UnorderedList.jsx";
 import LineChart from "../Components/LineChart.jsx";
 import DoughnutChart from "@/Components/DoughnutChart.jsx";
 import CollapsibleBox from "@/Components/CollapsibleBox.jsx";
@@ -116,7 +117,7 @@ export default function Home() {
           {/* Calculator and graph (WRAPPER) */}
           <div
             className={
-              "lg:flex max-md:flex-col p-[30px] xl:w-[75%]  max-lg:space-y-7  border-2 border-white rounded-[30px] shadow-md shadow-[#505C6227] bg-white bg-opacity-40 backdrop-blur-[30px]"
+              "lg:flex max-md:flex-col p-[30px] [@media(max-width:400px)]:p-[15px] xl:w-[75%]  max-lg:space-y-7  border-2 border-white rounded-[30px] shadow-md shadow-[#505C6227] bg-white bg-opacity-40 backdrop-blur-[30px]"
             }
           >
             {/* Calculator */}
@@ -366,27 +367,13 @@ export default function Home() {
             heading={"What are the advantages of calculating CAGR?"}
             headingBold={true}
             content={
-              <ul>
-                <li>
-                  Future projections: By using the CAGR of an investment, you
-                  can make projections about what the future value of your
-                  investment might be, based on past performance. This can be
-                  helpful in making investment decisions or setting financial
-                  goals.
-                </li>
-                <li>
-                  Investment performance evaluation: CAGR helps you to evaluate
-                  the performance of your investment over a specified period of
-                  time. It provides a clear picture of the growth or decline of
-                  your investment, which can help you make informed decisions
-                  about your investments.
-                </li>
-                <li>
-                  Portfolio analysis: CAGR can be used to analyse the
-                  performance of your portfolio as a whole, which can be helpful
-                  in making adjustments to your investment strategy.
-                </li>
-              </ul>
+              <UnorderedList
+                content={[
+                  "Future projections: By using the CAGR of an investment, you can make projections about what the future value of your investment might be, based on past performance. This can be helpful in making investment decisions or setting financial goals.",
+                  "Investment performance evaluation: CAGR helps you to evaluate the performance of your investment over a specified period of time. It provides a clear picture of the growth or decline of your investment, which can help you make informed decisions about your investments.",
+                  "Portfolio analysis: CAGR can be used to analyze the performance of your portfolio as a whole, which can be helpful in making adjustments to your investment strategy.",
+                ]}
+              />
             }
           />
 
