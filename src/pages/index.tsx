@@ -1,15 +1,20 @@
 import Head from "next/head";
 import Image from "next/image";
 import { useState } from "react";
+
+import Heading from "../Components/Heading.jsx";
+import Subheading from "../Components/Subheading.jsx";
+import CalculatorAndSidePannel from "../Components/CalculatorAndSidePannel.jsx";
+import CalculatorWrapper from "../Components/CalculatorWrapper.jsx";
+import Calculator from "../Components/Calculator.jsx";
+import ChartToggle from "../Components/ChartToggle.jsx";
+import InfoBox from "../Components/InfoBox.jsx";
+
 import SliderInput from "../Components/SliderInput.jsx";
 import UnorderedList from "../Components/UnorderedList.jsx";
 import LineChart from "../Components/LineChart.jsx";
 import DoughnutChart from "@/Components/DoughnutChart.jsx";
-import CollapsibleBox from "@/Components/CollapsibleBox.jsx";
-import RelatedCalculator from "@/Components/RelatedCalculator.jsx";
-
-import { FaChartPie, FaChartLine } from "react-icons/fa";
-import { MdOutlineShowChart } from "react-icons/md";
+import RelatedCalculators from "@/Components/RelatedCalculators.jsx";
 
 export default function Home() {
   const [initialAmount, setInitialAmount] = useState(100000);
@@ -35,7 +40,7 @@ export default function Home() {
       setOutput(CAGR.toFixed(2));
     }
     setAbsoluteReturns(
-      Number(((finalAmount - initialAmount) * 100) / initialAmount)
+      Number(Math.round(((finalAmount - initialAmount) * 100) / initialAmount))
     );
     calculateGraphPoints();
   }
@@ -76,25 +81,15 @@ export default function Home() {
 
       <main
         className={
-          "relative [@media(max-width:470px)]:p-5 [@media(max-width:1280px)]:p-10 xl:p-20 w-full overflow-x-hidden flex-col justify-between text-neutral-700 "
+          "relative [@media(max-width:470px)]:p-5 [@media(max-width:1280px)]:p-10 xl:p-20 w-full overflow-x-hidden flex-col justify-between text-neutral-700 font-poppins"
         }
       >
         <div>
           {/* Heading */}
-          <div
-            className={
-              "text-zinc-900 text-5xl font-semibold text-center leading-tight  [@media(max-width:300px)]:text-3xl"
-            }
-          >
-            <span className={"text-blue-600"}>Compound Annual Growth Rate</span>{" "}
-            Calculator
-          </div>
+          <Heading blue={"Compound Annual Growth Rate"} />
+
           {/* Subheading */}
-          <p
-            className={
-              "text-neutral-700 mt-3 text-lg text-center  [@media(max-width:300px)]:text-sm lg:text-lg"
-            }
-          >
+          <Subheading>
             CAGR stands for Compound Annual Growth Rate, which is a commonly
             used financial metric to measure the average growth rate of an
             investment over a specified period of time. It’s calculated as the
@@ -105,23 +100,15 @@ export default function Home() {
             accurate picture of the growth of an investment than simple average
             returns, as it takes into account the compounding effect of
             reinvested returns.
-          </p>
+          </Subheading>
         </div>
 
         {/* Calculator and side pannel */}
-        <div
-          className={
-            "xl:flex max-xl:flex-col flex-wrap w-full xl:max-h-[403px]  mt-[50px] [@media(max-width:400px)]:mt-[20px] justify-between"
-          }
-        >
+        <CalculatorAndSidePannel height={"403"}>
           {/* Calculator and graph (WRAPPER) */}
-          <div
-            className={
-              "lg:flex max-md:flex-col p-[30px] [@media(max-width:400px)]:p-[15px] xl:w-[75%]  max-lg:space-y-7  border-2 border-white rounded-[30px] shadow-md shadow-[#505C6227] bg-white bg-opacity-40 backdrop-blur-[30px]"
-            }
-          >
+          <CalculatorWrapper>
             {/* Calculator */}
-            <div className={"text-left text-lg lg:w-[50%] "}>
+            <Calculator calculate={calculate}>
               {/* Input box wrapper */}
               <div
                 className={
@@ -169,71 +156,12 @@ export default function Home() {
                   />
                 </div>
               </div>
-
-              {/* Control Box Wrapper */}
-              <div
-                className={
-                  "flex flex-warp justify-center mt-[40px] cursor-pointer "
-                }
-              >
-                {/* Control boxes */}
-                <div
-                  className={
-                    " border-[0.1rem] border-dashed border-[#36b366] p-[4px] rounded-[35px] w-[65%]"
-                  }
-                >
-                  <div
-                    className={
-                      "text-center text-white font-semibold rounded-[35px] p-[0.4rem]   shadow-lg shadow-[#36b3665d] bg-[#00d382]"
-                    }
-                    onClick={calculate}
-                  >
-                    Calculate
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* vertical line */}
-            <div
-              className={
-                " -my-4 mx-5 w-0  max-lg:h-0 max-lg:w-auto max-lg:-mx-2   rounded-[50px] border-2 border-solid border-[#7070701A]"
-              }
-            ></div>
+            </Calculator>
 
             {/* Charts/Graph wrapper */}
             <div className={"lg:w-[50%]"}>
               {/* Toggle Button */}
-              <div
-                className={
-                  " absolute flex flex-wrap z-10 place-content-center  w-[61px] h-[33px]  rounded-[30px] border-2 border-solid border-white bg-[#505C6227] shadow-md shadow-[#505C6227] backdrop-blur-[30px] m-0"
-                }
-              >
-                <button
-                  className={
-                    isLineChart
-                      ? " w-[23px] h-[23px] rounded-[50px] text-white bg-[#0161FF] border-2 border-solid border-white p-[2px] mx-[1px]"
-                      : " w-[23px] h-[23px] rounded-[50px] p-[2px] text-[#909090] mx-[1px]"
-                  }
-                  onClick={() => {
-                    setCheck(true);
-                  }}
-                >
-                  <MdOutlineShowChart />
-                </button>
-                <button
-                  className={
-                    isLineChart
-                      ? " w-[23px] h-[23px] rounded-[50px] p-[2px] text-[#909090] mx-[1px]"
-                      : " w-[23px] h-[23px] rounded-[50px] text-white bg-[#0161FF] border-2 border-solid border-white p-[2px] mx-[1px]"
-                  }
-                  onClick={() => {
-                    setCheck(false);
-                  }}
-                >
-                  <FaChartPie />
-                </button>
-              </div>
+              <ChartToggle isLineChart={isLineChart} setCheck={setCheck} />
 
               {/* Charts/Graph */}
               <div className={" relative object-right-top"}>
@@ -293,63 +221,45 @@ export default function Home() {
                 </div>
               </div>
             </div>
-          </div>
+          </CalculatorWrapper>
 
           {/* Side Pannel */}
-          <div
-            className={
-              " max-h-[inherit]    xl:w-[23%] px-[20px] py-[22px] max-xl:mt-[30px]  border-2 border-white rounded-[30px] shadow-md shadow-[#505C6227] bg-white bg-opacity-40 backdrop-blur-[30px] overflow-y-scroll "
-            }
-          >
-            <div className={"font-bold "}>How to use this calculator?</div>
-            <CollapsibleBox
-              heading={"Compound Annual Growth Rate"}
-              content={
-                "CAGR stands for Compound Annual Growth Rate, which is a commonly used financial metric to measure the average growth rate of an investment over a specified period of time."
-              }
-            />
-            <CollapsibleBox
-              heading={"Uses of CAGR"}
-              content={
-                "CAGR is the best formula for evaluating how different investments have performed over time.Investors can compare the CAGR to evaluate how well one stock performed against other stocks."
-              }
-            />
-            <CollapsibleBox
-              heading={"How can CAGR  help me?"}
-              content={
-                "CAGR lets you know the compounded returns you earn on an annual basis irrespective of the individual yearly performances of the fund. So you can compare the performance of different investments."
-              }
-              last={true}
+          <div className="max-h-[403px]  xl:w-[23%] ">
+            <InfoBox
+              type={"sidePannel"}
+              height={403}
+              contents={[
+                [
+                  "Compound Annual Growth Rate",
+                  "CAGR stands for Compound Annual Growth Rate, which is a commonly used financial metric to measure the average growth rate of an investment over a specified period of time.",
+                ],
+                [
+                  "Uses of CAGR",
+                  "CAGR is the best formula for evaluating how different investments have performed over time.Investors can compare the CAGR to evaluate how well one stock performed against other stocks.",
+                ],
+                [
+                  "How can CAGR  help me?",
+                  "CAGR lets you know the compounded returns you earn on an annual basis irrespective of the individual yearly performances of the fund. So you can compare the performance of different investments.",
+                ],
+              ]}
             />
           </div>
-        </div>
+        </CalculatorAndSidePannel>
 
         {/* FAQ box */}
-        <div
-          className={
-            " px-[25px] py-[10px] mt-[50px] border-2 border-white rounded-[30px] shadow-md shadow-[#505C6227] bg-white bg-opacity-40 backdrop-blur-[30px]"
-          }
-        >
-          <CollapsibleBox
-            heading={"What is CAGR?"}
-            headingBold={true}
-            content={
-              "CAGR stands for Compound Annual Growth Rate, which is a commonly used financial metric to measure the average growth rate of an investment over a specified period of time. It's calculated as the average rate of return that would have to be compounded annually to reach the final value from the initial value over the given time period."
-            }
-          />
-
-          <CollapsibleBox
-            heading={"Why should I calculate CAGR?"}
-            headingBold={true}
-            content={
-              "CAGR is expressed as a percentage and it is useful in comparing the growth of different investments. It provides a more accurate picture of the growth of an investment than simple average returns, as it takes into account the compounding effect of reinvested returns. CAGR provides a standardised way to compare the performance of different investments over the same time period, which makes it easier to determine which investments have performed better or worse."
-            }
-          />
-
-          <CollapsibleBox
-            heading={"How does the calculator work?"}
-            headingBold={true}
-            content={
+        <InfoBox
+          type={"faq"}
+          contents={[
+            [
+              "What is CAGR?",
+              "CAGR stands for Compound Annual Growth Rate, which is a commonly used financial metric to measure the average growth rate of an investment over a specified period of time. It's calculated as the average rate of return that would have to be compounded annually to reach the final value from the initial value over the given time period.",
+            ],
+            [
+              "Why should I calculate CAGR?",
+              "CAGR is expressed as a percentage and it is useful in comparing the growth of different investments. It provides a more accurate picture of the growth of an investment than simple average returns, as it takes into account the compounding effect of reinvested returns. CAGR provides a standardised way to compare the performance of different investments over the same time period, which makes it easier to determine which investments have performed better or worse.",
+            ],
+            [
+              "How does the calculator work?",
               <>
                 <div>It uses the following logic</div>
                 <br />
@@ -359,66 +269,38 @@ export default function Home() {
                   width={200}
                   height={150}
                 />
-              </>
-            }
-          />
-
-          <CollapsibleBox
-            heading={"What are the advantages of calculating CAGR?"}
-            headingBold={true}
-            content={
+              </>,
+            ],
+            [
+              "What are the advantages of calculating CAGR?",
               <UnorderedList
                 content={[
                   "Future projections: By using the CAGR of an investment, you can make projections about what the future value of your investment might be, based on past performance. This can be helpful in making investment decisions or setting financial goals.",
                   "Investment performance evaluation: CAGR helps you to evaluate the performance of your investment over a specified period of time. It provides a clear picture of the growth or decline of your investment, which can help you make informed decisions about your investments.",
                   "Portfolio analysis: CAGR can be used to analyze the performance of your portfolio as a whole, which can be helpful in making adjustments to your investment strategy.",
                 ]}
-              />
-            }
-          />
-
-          <CollapsibleBox
-            heading={"How to use CAGR calculator?"}
-            headingBold={true}
-            content={
-              "FundsIndia CAGR calculator is an intuitive tool that calculates the CAGR easily. Just plug in the Initial, Final Investment values along with the tenure of the investment and FundsIndia Calculator will give you the accurate CAGR of your investment."
-            }
-            last={true}
-          />
-        </div>
+              />,
+            ],
+            [
+              "How to use CAGR calculator?",
+              "FundsIndia CAGR calculator is an intuitive tool that calculates the CAGR easily. Just plug in the Initial, Final Investment values along with the tenure of the investment and FundsIndia Calculator will give you the accurate CAGR of your investment.",
+            ],
+          ]}
+        />
 
         {/* Related Calculators */}
-        <div className={"my-[30px] "}>
-          <div className={"font-bold mb-[14px] text-[#464143]"}>
-            Related Calculators
-          </div>
-
-          <div className={"overflow-x-scroll flex -mx-20  "}>
-            <RelatedCalculator
-              name={"Gratuity Calculator"}
-              path={"/gratuity"}
-              first={true}
-            />
-
-            <RelatedCalculator name={"SWP Calculator"} path={"#"} />
-
-            <RelatedCalculator name={"SWP Calculator"} path={"#"} />
-
-            <RelatedCalculator name={"SWP Calculator"} path={"#"} />
-
-            <RelatedCalculator name={"SWP Calculator"} path={"#"} />
-
-            <RelatedCalculator name={"SWP Calculator"} path={"#"} />
-
-            <RelatedCalculator name={"SWP Calculator"} path={"#"} />
-
-            <RelatedCalculator name={"SWP Calculator"} path={"#"} />
-
-            <RelatedCalculator name={"SWP Calculator"} path={"#"} />
-
-            <RelatedCalculator name={"SWP Calculator"} path={"#"} />
-          </div>
-        </div>
+        <RelatedCalculators
+          contents={[
+            ["Gratuity Calculator", "/gratuity"],
+            ["SWP Calculator", ""],
+            ["SWP Calculator", ""],
+            ["SWP Calculator", ""],
+            ["SWP Calculator", ""],
+            ["SWP Calculator", ""],
+            ["SWP Calculator", ""],
+            ["SWP Calculator", ""],
+          ]}
+        />
       </main>
     </>
   );

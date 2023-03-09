@@ -1,5 +1,5 @@
 import styles from '@/styles/Input.module.css'
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 export default function Input({ id, type = '', min = 0, max, step = 1, value, setValue }) {
 
 
@@ -39,6 +39,10 @@ export default function Input({ id, type = '', min = 0, max, step = 1, value, se
         setValue(textValue);
 
     };
+
+    // useEffect(() => {
+    //     setTextValue(((type === 'rupees') ? '\u20B9' : '') + Number(value).toLocaleString("en-In"));
+    // }, [value]);
 
     return (
         <div className={styles.inputBox}>
