@@ -20,7 +20,7 @@ export default function ChartToggle({ isLineChart, setCheck }) {
                     setCheck(true);
                 }}
             >
-                <MdOutlineShowChart className=" -ml-[0.5px] " />
+                <MdOutlineShowChart className={isLineChart ? " -ml-[0.5px] " : " ml-[1px]"} />
             </button>
             <button
                 className={
@@ -32,7 +32,7 @@ export default function ChartToggle({ isLineChart, setCheck }) {
                     setCheck(false);
                 }}
             >
-                <FaChartPie className=" -mt-[0.7px] " />
+                <FaChartPie className={isLineChart ? "ml-[1px]" : " -mt-[0.7px] "} />
             </button>
         </div>
     );

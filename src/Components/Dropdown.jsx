@@ -1,7 +1,11 @@
 
-export default function Dropdown({ heading, value, setValue }) {
+export default function Dropdown({ heading, options, value, setValue }) {
 
-
+    function addOption(option) {
+        return (
+            <option value={option} >{option}</option>
+        );
+    }
 
     return (
         <div className="flex justify-between mt-3">
@@ -9,10 +13,7 @@ export default function Dropdown({ heading, value, setValue }) {
 
             <div className="sm:w-[39%]">
                 <select value={value} onChange={(e) => { setValue(e.target.value) }} className={'h-[45px] w-full bg-[#D1E3FF] bg-opacity-[0.39] border-2 border-solid border-[#9BB0D3] rounded-[100px] text-center font-semibold backdrop-blur-[30px] bg-blue'} >
-                    <option value="a">a</option>
-                    <option value="b">b</option>
-                    <option value="c">c</option>
-                    <option value="d">d</option>
+                    {options.map(addOption)}
                 </select>
             </div>
         </div>

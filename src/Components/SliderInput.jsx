@@ -9,7 +9,7 @@ export default function Input({ id, type = '', min = 0, max, step = 1, value, se
     const handleSliderValue = (event) => {
         let tempValue = event.target.value;
         setValue(Number(tempValue));
-        setTextValue(((type === 'rupees') ? '\u20B9' : '') + tempValue.toLocaleString("en-In"));
+        setTextValue(((type === 'rupees') ? '\u20B9' : '') + Number(tempValue).toLocaleString("en-In"));
         //console.log(value, textValue);
     }
 
@@ -57,7 +57,7 @@ export default function Input({ id, type = '', min = 0, max, step = 1, value, se
                         value={value}
                         id={id}
                         onChange={handleSliderValue}
-                        className={'my-4 accent-[#00D382] bg-transparent '}
+                        className={'my-4 accent-[#00D382] bg-transparent flex '}
                     />
                 </div>
                 <div className=' w-[39%]   '>

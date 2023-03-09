@@ -7,10 +7,12 @@ import Subheading from "../Components/Subheading.jsx";
 import CalculatorAndSidePannel from "../Components/CalculatorAndSidePannel.jsx";
 import CalculatorWrapper from "../Components/CalculatorWrapper.jsx";
 import Calculator from "../Components/Calculator.jsx";
+import InputBoxWrapper from "../Components/InputBoxWrapper.jsx";
 import InfoBox from "../Components/InfoBox.jsx";
 
 import UnorderedList from "../Components/UnorderedList.jsx";
 import RelatedCalculators from "@/Components/RelatedCalculators.jsx";
+import Input from "../Components/SliderInput.jsx";
 
 export default function Home() {
   const [monthlySalary, setMonthlySalary] = useState(70000);
@@ -71,17 +73,13 @@ export default function Home() {
         </div>
 
         {/* Calculator and side pannel */}
-        <CalculatorAndSidePannel height={315}>
+        <CalculatorAndSidePannel>
           {/* Calculator and output (WRAPPER) */}
           <CalculatorWrapper>
             {/* Calculator */}
             <Calculator calculate={calculate}>
               {/* Input box wrapper */}
-              <div
-                className={
-                  "flex-col justify-evenly font-medium max-sm:space-y-3  xl:space-y-[10px] lg:space-y-[15px]"
-                }
-              >
+              <InputBoxWrapper>
                 {/* Input box */}
                 <div>
                   {/*Monthly salary block*/}
@@ -108,7 +106,7 @@ export default function Home() {
                     setValue={setYears}
                   />
                 </div>
-              </div>
+              </InputBoxWrapper>
             </Calculator>
 
             {/* Output wrapper */}
@@ -119,7 +117,7 @@ export default function Home() {
           </CalculatorWrapper>
 
           {/* Side Pannel */}
-          <div className="max-h-[315px]  xl:w-[23%] ">
+          <div className="xl:max-h-[311.2px]  xl:w-[23%] ">
             <InfoBox
               type="sidePannel"
               contents={[

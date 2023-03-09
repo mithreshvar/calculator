@@ -7,8 +7,10 @@ import Subheading from "../Components/Subheading.jsx";
 import CalculatorAndSidePannel from "../Components/CalculatorAndSidePannel.jsx";
 import CalculatorWrapper from "../Components/CalculatorWrapper.jsx";
 import Calculator from "../Components/Calculator.jsx";
+import InputBoxWrapper from "../Components/InputBoxWrapper.jsx";
 import ChartToggle from "../Components/ChartToggle.jsx";
 import InfoBox from "../Components/InfoBox.jsx";
+import ChartFooterElement from "../Components/ChartFooterElement.jsx";
 
 import SliderInput from "../Components/SliderInput.jsx";
 import UnorderedList from "../Components/UnorderedList.jsx";
@@ -104,17 +106,13 @@ export default function Home() {
         </div>
 
         {/* Calculator and side pannel */}
-        <CalculatorAndSidePannel height={"403"}>
+        <CalculatorAndSidePannel>
           {/* Calculator and graph (WRAPPER) */}
           <CalculatorWrapper>
             {/* Calculator */}
             <Calculator calculate={calculate}>
               {/* Input box wrapper */}
-              <div
-                className={
-                  "flex-col justify-evenly font-medium max-sm:space-y-3  xl:space-y-[10px] lg:space-y-[15px]"
-                }
-              >
+              <InputBoxWrapper>
                 {/* Input box */}
                 <div>
                   {/*Initial investment block*/}
@@ -155,7 +153,7 @@ export default function Home() {
                     setValue={setYears}
                   />
                 </div>
-              </div>
+              </InputBoxWrapper>
             </Calculator>
 
             {/* Charts/Graph wrapper */}
@@ -189,20 +187,18 @@ export default function Home() {
                       dependency={output}
                     />
                     <div>
-                      <div className={"flex justify-between font-medium mb-3"}>
-                        <div>Invested</div>
-                        <div className={"font-semibold"}>
-                          {initialAmount.toLocaleString("en-In")}
-                        </div>
-                      </div>
-                      <div className={"flex justify-between font-medium mb-3"}>
-                        <div>Gains</div>
-                        <div className={"font-semibold"}>
-                          {(finalAmount - initialAmount).toLocaleString(
-                            "en-In"
-                          )}
-                        </div>
-                      </div>
+                      <ChartFooterElement
+                        id={"invested"}
+                        label={"Invested"}
+                        value={initialAmount.toLocaleString("en-In")}
+                      />
+                      <ChartFooterElement
+                        id={"gains"}
+                        label={"Gains"}
+                        value={(finalAmount - initialAmount).toLocaleString(
+                          "en-In"
+                        )}
+                      />
                     </div>
                   </>
                 )}
@@ -211,23 +207,26 @@ export default function Home() {
               {/* Output box */}
               <div className={"flex-col "}>
                 {/*CARG output*/}
-                <div className={"flex justify-between font-medium mb-3"}>
-                  <div id="CAGR_output">CAGR</div>
-                  <div className={"font-semibold"}>{output}%</div>
-                </div>
-                <div className={"flex justify-between "}>
-                  <div id="absoluteReturns">Absolute Returns</div>
-                  <div className={"font-semibold"}>{absoluteReturns}%</div>
-                </div>
+                <ChartFooterElement
+                  id={"CAGR_output"}
+                  label={"CAGR"}
+                  value={output + "%"}
+                />
+
+                <ChartFooterElement
+                  id={"absoluteReturns"}
+                  label={"Absolute Returns"}
+                  value={absoluteReturns + "%"}
+                  last={true}
+                />
               </div>
             </div>
           </CalculatorWrapper>
 
           {/* Side Pannel */}
-          <div className="max-h-[403px]  xl:w-[23%] ">
+          <div className="xl:max-h-[404.2px]  xl:w-[23%] ">
             <InfoBox
               type={"sidePannel"}
-              height={403}
               contents={[
                 [
                   "Compound Annual Growth Rate",
