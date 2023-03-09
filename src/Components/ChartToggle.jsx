@@ -20,19 +20,19 @@ export default function ChartToggle({ isLineChart, setCheck }) {
                     setCheck(true);
                 }}
             >
-                <MdOutlineShowChart />
+                <MdOutlineShowChart className=" -ml-[0.5px] " />
             </button>
             <button
                 className={
                     isLineChart
                         ? " w-[23px] h-[23px] rounded-[50px] p-[2px] text-[#909090] mx-[1px]"
-                        : " w-[23px] h-[23px] rounded-[50px] text-white bg-[#0161FF] border-2 border-solid border-white p-[2px] mx-[1px]"
+                        : " w-[23px] h-[23px] rounded-[50px] text-white bg-[#0161FF] border-2 border-solid border-white p-[2px] mx-[1px] "
                 }
                 onClick={() => {
                     setCheck(false);
                 }}
             >
-                <FaChartPie />
+                <FaChartPie className=" -mt-[0.7px] " />
             </button>
         </div>
     );

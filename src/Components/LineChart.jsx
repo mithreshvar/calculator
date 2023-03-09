@@ -34,7 +34,7 @@ export default function Chart({ points }) {
             labels: {
                 enabled: false,
             },
-            gridLineColor: 'white',
+            gridLineColor: 'transparent',
         },
 
         plotOptions: {
@@ -93,7 +93,6 @@ export default function Chart({ points }) {
         })
     }, points);
 
-    // useEffect(widthChange, Window.innerWidth);
 
     return (
 

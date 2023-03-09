@@ -1,48 +1,49 @@
 import styles from '@/styles/Input.module.css'
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 export default function Input({ id, type = '', min = 0, max, step = 1, value, setValue }) {
 
 
     const [textValue, setTextValue] = useState(((type === 'rupees') ? '\u20B9' : '') + Number(value).toLocaleString("en-In"));
 
 
+    const handleSliderValue = (event) => {
+        let tempValue = event.target.value;
+        setValue(Number(tempValue));
+        setTextValue(((type === 'rupees') ? '\u20B9' : '') + tempValue.toLocaleString("en-In"));
+        //console.log(value, textValue);
+    }
+
+
     const addSymbol = (event) => {
-        if (!(event.target.value.charAt(0) == '\u20B9')) {
-            event.target.value = ((type === 'rupees') ? '\u20B9' : '') + Number(event.target.value).toLocaleString("en-In");
+        if (!(String(textValue).charAt(0) == '\u20B9')) {
+            setTextValue(((type === 'rupees') ? '\u20B9' : '') + Number(event.target.value).toLocaleString("en-In"));
         }
     }
 
     const removeSymbol = (event) => {
-        event.target.value = Number(event.target.value.replace(/,|\u20B9|%/g, ''));
+        setTextValue(event.target.value.replace(/,|\u20B9|%/g, ''));
     }
 
 
-    const handleSliderValue = (event) => {
-        setValue(event.target.value);
-        setTextValue(((type === 'rupees') ? '\u20B9' : '') + Number(event.target.value).toLocaleString("en-In"));
-    }
+
 
     const handleTextValue = (event) => {
 
-        if ((!(isNaN(event.target.value)) && event.target.value > 0 && event.target.value <= max) || event.target.value == '' || event.target.value == '0') {
-            if (event.target.value == "") {
-                setTextValue(0);
-            }
-            else if (event.target.value.length == 2 && event.target.value.charAt(0) == '0') {
-                setTextValue(Number(event.target.value.charAt(1)));
-            }
-            else {
-                setTextValue(Number(event.target.value));
-            }
-        }
+        let tempValue = event.target.value;
+        if ((!(isNaN(tempValue)) && tempValue > 0 && tempValue <= max) || tempValue == '' || tempValue == '0') {
 
-        setValue(textValue);
+            if (tempValue == "") {
+                tempValue = '0';
+            }
+            else if (tempValue.length == 2 && tempValue.charAt(0) == '0') {
+                tempValue = tempValue.charAt(1);
+            }
+            setTextValue(tempValue);
+            setValue(Number(tempValue));
+        }
 
     };
 
-    // useEffect(() => {
-    //     setTextValue(((type === 'rupees') ? '\u20B9' : '') + Number(value).toLocaleString("en-In"));
-    // }, [value]);
 
     return (
         <div className={styles.inputBox}>
@@ -66,8 +67,8 @@ export default function Input({ id, type = '', min = 0, max, step = 1, value, se
                         id={`${id}Label`}
                         min={min}
                         max={max}
-                        onBlur={addSymbol}
-                        onFocus={removeSymbol}
+                        onBlur={(type === '') ? null : addSymbol}
+                        onFocus={(type === '') ? null : removeSymbol}
                         className={'h-[45px] w-full bg-[#D1E3FF] bg-opacity-[0.39] border-2 border-solid border-[#9BB0D3] rounded-[100px] text-center font-semibold '}
                         onChange={handleTextValue}
                     />
