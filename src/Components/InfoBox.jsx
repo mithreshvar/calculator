@@ -3,7 +3,7 @@ import CollapsibleBox from "@/Components/CollapsibleBox.jsx";
 export default function InfoBox({ type = '', height = 0, contents }) {
 
     let styleFaq = 'px-[25px] py-[10px] mt-[50px] border-2 border-white rounded-[30px] shadow-md shadow-[#505C6227] bg-white bg-opacity-40 backdrop-blur-[30px]';
-    let styleSidePannel = ` max-h-[${height}px]  h-full px-[20px] py-[22px] max-xl:mt-[30px]  border-2 border-white rounded-[30px] shadow-md shadow-[#505C6227] bg-white bg-opacity-40 backdrop-blur-[30px] overflow-y-scroll`;
+    let styleSidePannel = " h-full px-[20px] py-[22px] max-xl:mt-[30px]  border-2 border-white rounded-[30px] shadow-md shadow-[#505C6227] bg-white bg-opacity-40 backdrop-blur-[30px] overflow-y-scroll ";
 
     let style;
 
@@ -30,7 +30,7 @@ export default function InfoBox({ type = '', height = 0, contents }) {
         <div
             className={style}
         >
-            {(type === 'sidePannel') ? <div className={"font-bold "}>How to use this calculator?</div> : ''}
+            {(type === 'sidePannel') ? <div className={"font-bold mb-[18px] "}>How to use this calculator?</div> : ''}
             {contents.map(addCollapsible)}
 
         </div>

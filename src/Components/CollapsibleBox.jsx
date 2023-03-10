@@ -13,7 +13,7 @@ export default function CollapsibleBox({ heading, headingBold = false, content, 
     fontWeight: weight,
     display: 'flex',
     justifyContent: 'space-between',
-    margin: '0.5rem',
+    margin: '10px 0',
   }
   return (
     <>
@@ -22,12 +22,12 @@ export default function CollapsibleBox({ heading, headingBold = false, content, 
         triggerWhenOpen={[heading, <HiOutlineChevronUp style={{ flexShrink: 0, color: '#005CFF', width: '18px', height: '18px' }} />]}
         triggerStyle={style}
       >
-        {content}
+        <div className=' mb-[20px] '>{content}</div>
       </Collapsible >
 
       {/* line */}
 
-      {last ? <div className='mb-1'></div> : <div style={{ width: 100 + '%', height: '0px', border: '0.5px solid #C4C4C4', opacity: 1, marginTop: '0.5rem', }}></div>}
+      {last ? <div className='mb-1'></div> : <div style={{ width: 100 + '%', height: '0px', border: '0.5px solid #C4C4C4', opacity: 1, marginTop: '0', }}></div>}
 
     </>
   );

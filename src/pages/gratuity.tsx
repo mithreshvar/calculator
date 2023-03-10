@@ -202,7 +202,7 @@ export default function Home() {
             ],
             [
               "How does the Gratuity calculator work?",
-              <div className="space-y-2">
+              <div className="space-y-3">
                 <div>It uses the following logic</div>
                 <UnorderedList
                   content={[
@@ -212,7 +212,7 @@ export default function Home() {
                         covered under the Gratuity Act can be calculated using
                         the formula:
                       </div>
-                      <div className="flex justify-center">
+                      <div>
                         <div className="text-left">
                           <div className="font-bold">
                             Gratuity = n*b*15 / 26
@@ -243,7 +243,7 @@ export default function Home() {
                     "For employees whose employer is not covered under the Gratuity Act, the gratuity amount would be calculated as per the half-month salary on each completed year of service.",
                   ]}
                 />
-                <div className="flex justify-center">
+                <div>
                   <div className="font-semibold text-left">
                     The formula is: (15 * Your last drawn salary * the working
                     tenure) / 30.

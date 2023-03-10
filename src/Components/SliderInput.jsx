@@ -74,6 +74,7 @@ export default function Input({ id, type = '', min = 0, max, step = 1, value, se
                     />
                 </div>
             </div>
+            {(value < min) ? <div className=' text-red-600 text-sm font-normal -mt-[7px] -mb-[13px]'>minimum value is {min}.</div> : ''}
         </div>
     )
 }
