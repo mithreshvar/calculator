@@ -11,6 +11,15 @@ export default function Chart({ points }) {
             styleMode: true,
             backgroundColor: 'transparent',
             height: '220px',
+            style: {
+                fontFamily: 'poppins',
+                fontSize: '12px',
+                fontWeight: '400',
+                color: '#000000',
+
+            },
+            marginLeft: 15,
+            marginRight: 15,
         },
 
         title: {
@@ -18,12 +27,27 @@ export default function Chart({ points }) {
         },
 
         xAxis: {
-            // tickInterval: 2,
-            labels: {
-                step: 1
-            },
+
+            allowDecimals: false,
+            //tickInterval: 1,
+
+            tickLength: 0,
+
             gridLineWidth: 1,
-            gridZIndex: 2,
+
+            // endOnTick: true,
+            // startOnTick: true,
+
+            labels: {
+                style: {
+                    color: "#000000",
+                    fontFamily: 'poppins',
+                    fontSize: '12px',
+                    fontWeight: '400',
+                    opacity: 0.4,
+                },
+            },
+
         },
 
         yAxis: {
@@ -46,7 +70,7 @@ export default function Chart({ points }) {
                         [0, 'rgba(0, 221, 111, 0.65)'],
                         [1, 'rgba(204, 255, 230,0.2)']
                     ]
-                }
+                },
             },
             areaspline: {
                 color: '#00DD6F',

@@ -3,8 +3,8 @@ import Collapsible from 'react-collapsible';
 import { HiOutlineChevronDown, HiOutlineChevronUp } from "react-icons/hi";
 
 
-export default function CollapsibleBox({ heading, headingBold = false, content, last = false }) {
-  let weight = 500;
+export default function CollapsibleBox({ heading, headingBold = false, content, type, last = false }) {
+  let weight = 400;
   if (headingBold) {
     weight = 600;
   }
@@ -13,8 +13,22 @@ export default function CollapsibleBox({ heading, headingBold = false, content, 
     fontWeight: weight,
     display: 'flex',
     justifyContent: 'space-between',
-    margin: '10px 0',
+    fontSize: '14px',
+    margin: '0',
   }
+
+
+  let lineStyle = {
+    width: 100 + '%',
+    height: '0px',
+    border: '0.5px solid #C4C4C4',
+    opacity: 1,
+    marginTop: '0',
+    margin: (type == 'faq') ? '20px 0px' : '10px 0',
+  }
+
+  let contentStyle = (type === 'faq') ? ' mt-[10px] text-[#464143] text-[14px] font-normal pr-[22px]' : ' mt-[10px] text-[#464143] text-[14px] font-normal ';
+
   return (
     <>
       <Collapsible
@@ -22,12 +36,12 @@ export default function CollapsibleBox({ heading, headingBold = false, content, 
         triggerWhenOpen={[heading, <HiOutlineChevronUp style={{ flexShrink: 0, color: '#005CFF', width: '18px', height: '18px' }} />]}
         triggerStyle={style}
       >
-        <div className=' mb-[20px] '>{content}</div>
+        <div className={contentStyle}>{content}</div>
       </Collapsible >
 
       {/* line */}
 
-      {last ? <div className='mb-1'></div> : <div style={{ width: 100 + '%', height: '0px', border: '0.5px solid #C4C4C4', opacity: 1, marginTop: '0', }}></div>}
+      {last ? <div className='mb-1'></div> : <div style={lineStyle}></div>}
 
     </>
   );

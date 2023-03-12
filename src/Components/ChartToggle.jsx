@@ -7,32 +7,32 @@ export default function ChartToggle({ isLineChart, setCheck }) {
     return (
         <div
             className={
-                " absolute flex flex-wrap z-10 place-content-center  w-[61px] h-[33px]  rounded-[30px] border-2 border-solid border-white bg-[#505C6227] shadow-md shadow-[#505C6227] backdrop-blur-[30px] m-0"
+                " absolute flex flex-wrap z-10   w-[61px] h-[33px]  rounded-[30px] border-2 border-solid border-white bg-[#505C6227] shadow-md shadow-[#505C6227] backdrop-blur-[30px] m-0" //place-content-center
             }
         >
             <button
                 className={
                     isLineChart
-                        ? " w-[23px] h-[23px] rounded-[50px] text-white bg-[#0161FF] border-2 border-solid border-white p-[2px] mx-[1px]"
-                        : " w-[23px] h-[23px] rounded-[50px] p-[2px] text-[#909090] mx-[1px]"
+                        ? "absolute w-[23px] h-[23px] rounded-[50px] text-white bg-[#0161FF] border-[2px] border-solid border-white  flex justify-center items-center  top-[4px] left-[5px] "
+                        : "absolute w-[23px] h-[23px] rounded-[50px] text-[#909090] flex justify-center items-center  top-[4px] left-[5px] "
                 }
                 onClick={() => {
                     setCheck(true);
                 }}
             >
-                <MdOutlineShowChart className={isLineChart ? " -ml-[0.5px] " : " ml-[1px]"} />
+                <MdOutlineShowChart />
             </button>
             <button
                 className={
                     isLineChart
-                        ? " w-[23px] h-[23px] rounded-[50px] p-[2px] text-[#909090] mx-[1px]"
-                        : " w-[23px] h-[23px] rounded-[50px] text-white bg-[#0161FF] border-2 border-solid border-white p-[2px] mx-[1px] "
+                        ? "absolute w-[23px] h-[23px] rounded-[50px] text-[#909090] flex justify-center items-center top-[4px] right-[5px] "
+                        : "absolute w-[23px] h-[23px] rounded-[50px] text-white bg-[#0161FF] border-[2px] border-solid border-white flex justify-center items-center  top-[4px] right-[5px] "
                 }
                 onClick={() => {
                     setCheck(false);
                 }}
             >
-                <FaChartPie className={isLineChart ? "ml-[1px]" : " -mt-[0.7px] "} />
+                <FaChartPie className=" h-[12.74px] w-[13.54px]  " />
             </button>
         </div>
     );

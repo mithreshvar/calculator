@@ -2,7 +2,7 @@ import Head from "next/head";
 import { useState } from "react";
 import Heading from "../Components/Heading.jsx";
 
-import SliderInput from "../Components/SliderInput.jsx";
+import InputSlider from "../Components/InputSlider.jsx";
 import Subheading from "../Components/Subheading.jsx";
 import CalculatorAndSidePannel from "../Components/CalculatorAndSidePannel.jsx";
 import CalculatorWrapper from "../Components/CalculatorWrapper.jsx";
@@ -12,7 +12,6 @@ import InfoBox from "../Components/InfoBox.jsx";
 
 import UnorderedList from "../Components/UnorderedList.jsx";
 import RelatedCalculators from "@/Components/RelatedCalculators.jsx";
-import Input from "../Components/SliderInput.jsx";
 
 export default function Home() {
   const [monthlySalary, setMonthlySalary] = useState(70000);
@@ -53,7 +52,7 @@ export default function Home() {
 
       <main
         className={
-          "relative [@media(max-width:470px)]:p-5 [@media(max-width:1280px)]:p-10 xl:p-20 w-full overflow-x-hidden flex-col justify-between text-[#464143] font-['poppins']"
+          "relative [@media(max-width:470px)]:p-5 [@media(max-width:1280px)]:p-10 xl:p-20 w-full overflow-x-hidden flex-col justify-between text-[#464143] font-['poppins'] leading-[18px]"
         }
       >
         <div>
@@ -84,7 +83,7 @@ export default function Home() {
                 <div>
                   {/*Monthly salary block*/}
                   <div>Monthly salary(Basic+DA)</div>
-                  <SliderInput
+                  <InputSlider
                     id="monthlySalary"
                     type="rupees"
                     min={10000}
@@ -98,7 +97,7 @@ export default function Home() {
                 <div>
                   {/*Years of service block*/}
                   <div>Years of service</div>
-                  <SliderInput
+                  <InputSlider
                     id="years"
                     min={5}
                     max={50}

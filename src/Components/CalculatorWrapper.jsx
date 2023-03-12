@@ -11,7 +11,7 @@ export default function CalculatorWrapper({ children }) {
             {/* vertical line */}
             <div
                 className={
-                    " -my-4 mx-5 w-0  max-lg:h-0 max-lg:w-auto max-lg:-mx-2   rounded-[50px] border-2 border-solid border-[#7070701A]"
+                    " -my-4 mx-[20px] w-0  max-lg:h-0 max-lg:w-auto max-lg:-mx-2   rounded-[50px] border-2 border-solid border-[#707070] opacity-10"
                 }
             ></div>
             {children[1]}

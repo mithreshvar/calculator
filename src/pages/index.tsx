@@ -12,7 +12,7 @@ import ChartToggle from "../Components/ChartToggle.jsx";
 import InfoBox from "../Components/InfoBox.jsx";
 import ChartFooterElement from "../Components/ChartFooterElement.jsx";
 
-import SliderInput from "../Components/SliderInput.jsx";
+import InputSlider from "../Components/InputSlider.jsx";
 import UnorderedList from "../Components/UnorderedList.jsx";
 import LineChart from "../Components/LineChart.jsx";
 import DoughnutChart from "@/Components/DoughnutChart.jsx";
@@ -83,7 +83,7 @@ export default function Home() {
 
       <main
         className={
-          "relative [@media(max-width:470px)]:p-5 [@media(max-width:1280px)]:p-10 xl:p-20 w-full overflow-x-hidden flex-col justify-between text-[#464143] font-['poppins']"
+          "relative [@media(max-width:470px)]:p-5 [@media(max-width:1280px)]:p-10 xl:p-20 w-full overflow-x-hidden flex-col justify-between text-[#464143] font-['poppins'] leading-[18px] "
         }
       >
         <div>
@@ -117,7 +117,7 @@ export default function Home() {
                 <div>
                   {/*Initial investment block*/}
                   <div>Initial investment</div>
-                  <SliderInput
+                  <InputSlider
                     id="initialInvestment"
                     type="rupees"
                     min={1000}
@@ -131,7 +131,7 @@ export default function Home() {
                 <div>
                   {/*Final investment block*/}
                   <div>Final investment</div>
-                  <SliderInput
+                  <InputSlider
                     id="finalInvestment"
                     type="rupees"
                     min={1000}
@@ -145,7 +145,7 @@ export default function Home() {
                 <div>
                   {/*Duration of investment block*/}
                   <div>Duration of investment</div>
-                  <SliderInput
+                  <InputSlider
                     id="years"
                     min={1}
                     max={40}
@@ -166,7 +166,7 @@ export default function Home() {
                 {isLineChart ? (
                   <>
                     <LineChart points={graphPoints} />
-                    <div className={"mb-3"}>
+                    <div className={"mb-3 text-[14px] font-normal "}>
                       Investment of{" "}
                       <span className={"font-semibold"}>
                         Rs.{initialAmount.toLocaleString("en-In")}
