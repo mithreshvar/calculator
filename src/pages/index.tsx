@@ -259,21 +259,63 @@ export default function Home() {
             ],
             [
               "How does the calculator work?",
-              <>
+              <div className=" space-y-[10px] ">
                 <div>It uses the following logic</div>
-                <Image
-                  alt="CAGR formula"
-                  src={"/CAGRformula.jpg"}
-                  width={200}
-                  height={150}
-                />
+
+                <div className={"font-semibold flex items-center"}>
+                  <div>CAGR = </div>
+                  <div className="flex items-center">
+                    <div className="flex h-[42px] w-[8px] text-[39px] font-extralight items-center">
+                      (
+                    </div>
+
+                    <div className="flex items-center">
+                      <div className="flex   mr-[8px] ml-[2px]   h-[33px] w-[6px] text-[30px] font-light items-center">
+                        (
+                      </div>
+
+                      <div className="flex-col  ">
+                        <div className=" h-[20px] w-[17px] ">EV</div>
+                        <div className=" h-0 text-[55px] font-thin flex justify-center ml-[1px] pt-[1px]  items-center">
+                          -
+                        </div>
+                        <div className=" h-[20px] w-[19px] ">BV</div>
+                      </div>
+
+                      <div className="flex   mr-[6px] -ml-[6px]    h-[33px] w-[6px] text-[30px] font-light items-center">
+                        )
+                      </div>
+                    </div>
+
+                    <div className=" flex-col justify-center -mt-[28px] mr-[3px] ">
+                      <div className=" text-[10px] h-[15px] flex justify-center">
+                        1
+                      </div>
+                      <div className=" h-0 font-light text-[15px] -mt-[8px] mb-[5px] flex justify-center">
+                        -
+                      </div>
+                      <div className=" text-[10px] h-[15px] flex justify-center">
+                        n
+                      </div>
+                    </div>
+
+                    <div>-1</div>
+
+                    <div className="flex h-[42px] w-[8px] -ml-[3px] text-[39px] font-extralight items-center">
+                      )
+                    </div>
+                  </div>
+                  <div className=" ml-[8px] ">
+                    <span className="font-normal">X</span> 100
+                  </div>
+                </div>
                 <div className={"font-semibold"}>
                   <div>Where:</div>
                   <div>EV = Ending value</div>
                   <div>BV = Beginning value</div>
                   <div>N = Number of years</div>
                 </div>
-              </>,
+              </div>,
             ],
             [
               "What are the advantages of calculating CAGR?",
