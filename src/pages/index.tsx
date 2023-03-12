@@ -259,10 +259,10 @@ export default function Home() {
             ],
             [
               "How does the calculator work?",
-              <div className=" space-y-[10px] ">
-                <div>It uses the following logic</div>
+              <div className=" space-y-[8px] ">
+                <div className="mb-[10px]">It uses the following logic</div>
 
-                <div className={"font-semibold flex items-center"}>
+                <div className={"font-semibold flex items-center "}>
                   <div>CAGR = </div>
                   <div className="flex items-center">
                     <div className="flex h-[42px] w-[8px] text-[39px] font-extralight items-center">
