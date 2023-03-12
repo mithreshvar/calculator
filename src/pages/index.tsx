@@ -261,13 +261,18 @@ export default function Home() {
               "How does the calculator work?",
               <>
                 <div>It uses the following logic</div>
-                <br />
                 <Image
                   alt="CAGR formula"
-                  src={"/CAGRformula.png"}
+                  src={"/CAGRformula.jpg"}
                   width={200}
                   height={150}
                 />
+                <div className={"font-semibold"}>
+                  <div>Where:</div>
+                  <div>EV = Ending value</div>
+                  <div>BV = Beginning value</div>
+                  <div>N = Number of years</div>
+                </div>
               </>,
             ],
             [
