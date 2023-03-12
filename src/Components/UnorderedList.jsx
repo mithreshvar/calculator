@@ -5,7 +5,7 @@ export default function UnorderedList({ content }) {
     function addList(text) {
         return (
             <li className=" flex flex-row ">
-                <VscCircleFilled className="text-[#00DD6F] mt-[6px] ml-[4.5px] mr-[4px] w-[15px] h-[15px] shrink-0 " />
+                <VscCircleFilled className="text-[#00DD6F] mt-[2px] -ml-[3px] mr-[2px] w-[15px] h-[15px] shrink-0 " />
                 {text}
             </li>
         )
