@@ -116,7 +116,7 @@ export default function Home() {
           </CalculatorWrapper>
 
           {/* Side Pannel */}
-          <div className="xl:max-h-[311.2px]  xl:w-[23%] ">
+          <div className="xl:max-h-[295.2px]  xl:w-[23%] ">
             <InfoBox
               type="sidePannel"
               contents={[
