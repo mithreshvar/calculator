@@ -23,6 +23,17 @@ export default function Home() {
   const [finalAmount, setFinalAmount] = useState(1000000);
   const [years, setYears] = useState(10);
 
+  const minInitialAmount = 1000;
+  const maxInitialAmount = 10000000;
+  const stepInitialAmount = 100;
+
+  const minFinalAmount = 1000;
+  const maxFinalAmount = 10000000;
+  const stepFinalAmount = 100;
+
+  const minYears = 1;
+  const maxYears = 40;
+
   let CAGR = 25.89;
   const [absoluteReturns, setAbsoluteReturns] = useState(900);
   const [output, setOutput] = useState("25.89");
@@ -35,16 +46,24 @@ export default function Home() {
   ]);
 
   function calculate() {
-    CAGR = (Math.pow(finalAmount / initialAmount, 1 / years) - 1) * 100;
-    if (CAGR === Infinity || isNaN(CAGR)) {
-      setOutput("-");
-    } else {
-      setOutput(CAGR.toFixed(2));
+    if (
+      initialAmount >= minInitialAmount &&
+      finalAmount >= minFinalAmount &&
+      years >= minYears
+    ) {
+      CAGR = (Math.pow(finalAmount / initialAmount, 1 / years) - 1) * 100;
+      if (CAGR === Infinity || isNaN(CAGR)) {
+        setOutput("-");
+      } else {
+        setOutput(CAGR.toFixed(2));
+      }
+      setAbsoluteReturns(
+        Number(
+          Math.round(((finalAmount - initialAmount) * 100) / initialAmount)
+        )
+      );
+      calculateGraphPoints();
     }
-    setAbsoluteReturns(
-      Number(Math.round(((finalAmount - initialAmount) * 100) / initialAmount))
-    );
-    calculateGraphPoints();
   }
 
   function calculateGraphPoints() {
@@ -120,9 +139,9 @@ export default function Home() {
                   <InputSlider
                     id="initialInvestment"
                     type="rupees"
-                    min={1000}
-                    max={10000000}
-                    step={100}
+                    min={minInitialAmount}
+                    max={maxInitialAmount}
+                    step={stepInitialAmount}
                     value={initialAmount}
                     setValue={setInitialAmount}
                   />
@@ -134,9 +153,9 @@ export default function Home() {
                   <InputSlider
                     id="finalInvestment"
                     type="rupees"
-                    min={1000}
-                    max={10000000}
-                    step={100}
+                    min={minFinalAmount}
+                    max={maxFinalAmount}
+                    step={stepFinalAmount}
                     value={finalAmount}
                     setValue={setFinalAmount}
                   />
@@ -147,8 +166,8 @@ export default function Home() {
                   <div>Duration of investment</div>
                   <InputSlider
                     id="years"
-                    min={1}
-                    max={40}
+                    min={minYears}
+                    max={maxYears}
                     value={years}
                     setValue={setYears}
                   />
