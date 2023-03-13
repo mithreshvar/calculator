@@ -14,8 +14,8 @@ export default function RelatedCalculators({ contents }) {
     }
 
     return (
-        <div className={"my-[30px] "}>
-            <div className={"font-bold mb-[14px] text-[#464143]"}>
+        <div className={"mt-[30px] "}>
+            <div className={"font-bold mb-[14px] text-[#464143] text-[16px] [@media(min-width:1920px)]:text-[20px]"}>
                 Related Calculators
             </div>
 

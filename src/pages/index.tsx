@@ -102,7 +102,7 @@ export default function Home() {
 
       <main
         className={
-          "relative [@media(max-width:470px)]:p-5 [@media(max-width:1280px)]:p-10 xl:p-20 w-full overflow-x-hidden flex-col justify-between text-[#464143] font-['poppins'] leading-[18px] "
+          "relative [@media(max-width:470px)]:px-[20px] [@media(max-width:1280px)]:px-[40px] xl:px-[80px] py-[50px] w-full overflow-x-hidden flex-col justify-between text-[#464143] font-['poppins'] leading-[18px] [@media(min-width:1920px)]:leading-[22px] "
         }
       >
         <div>
@@ -243,7 +243,7 @@ export default function Home() {
           </CalculatorWrapper>
 
           {/* Side Pannel */}
-          <div className="xl:max-h-[379.2px]  xl:w-[23%] ">
+          <div className="xl:max-h-[379.2px] [@media(min-width:1920px)]:max-h-[390.2px]  xl:w-[23%] ">
             <InfoBox
               type={"sidePannel"}
               contents={[

@@ -11,12 +11,12 @@ export default function ControlBox({ calculate }) {
             {/* Control boxes */}
             <div
                 className={
-                    " border-[1px] border-dashed border-[#00D382] p-[4px] rounded-[35px] w-[250px] h-[56px] "
+                    " border-[1px] border-dashed border-[#00D382] p-[4px] rounded-[35px] w-[250px] h-[56px] flex justify-center items-center  "
                 }
             >
                 <div
                     className={
-                        "flex justify-center items-center text-white font-semibold rounded-[35px]  w-full h-full   shadow-lg shadow-[#36b3665d] bg-[#00d382]"
+                        "flex justify-center items-center text-white font-semibold rounded-[35px]  w-[242px] h-[48px]   shadow-lg shadow-[#36b3665d] bg-[#00d382]"
                     }
                     onClick={calculate}
                 >

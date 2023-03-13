@@ -13,7 +13,6 @@ export default function CollapsibleBox({ heading, headingBold = false, content, 
     fontWeight: weight,
     display: 'flex',
     justifyContent: 'space-between',
-    fontSize: '14px',
     margin: '0',
   }
 
@@ -27,7 +26,7 @@ export default function CollapsibleBox({ heading, headingBold = false, content, 
     margin: (type == 'faq') ? '20px 0px' : '10px 0',
   }
 
-  let contentStyle = (type === 'faq') ? ' mt-[10px] text-[#464143] text-[14px] font-normal pr-[22px]' : ' mt-[10px] text-[#464143] text-[14px] font-normal ';
+  let contentStyle = (type === 'faq') ? ' mt-[10px] text-[#464143] text-[14px] [@media(min-width:1920px)]:text-[18px] font-normal pr-[20px]' : ' mt-[10px] text-[#464143] text-[14px] [@media(min-width:1920px)]:text-[18px] font-normal ';
 
   return (
     <>
