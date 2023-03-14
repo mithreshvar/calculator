@@ -185,7 +185,11 @@ export default function Home() {
                 {isLineChart ? (
                   <>
                     <LineChart points={graphPoints} />
-                    <div className={"mb-3 text-[14px] font-normal "}>
+                    <div
+                      className={
+                        "mb-3 text-[14px] [@media(min-width:1920px)]:text-[18px] font-normal "
+                      }
+                    >
                       Investment of{" "}
                       <span className={"font-semibold"}>
                         Rs.{initialAmount.toLocaleString("en-In")}
