@@ -35,6 +35,13 @@ export default function Home() {
   const maxYears = 40;
 
   let CAGR = 25.89;
+
+  {
+    /* Display variables */
+  }
+  const [invested, setInvested] = useState("1,00,000");
+  const [finalInvest, setFinalInvest] = useState("10,00,000");
+  const [gains, setGains] = useState("9,00,000");
   const [absoluteReturns, setAbsoluteReturns] = useState(900);
   const [output, setOutput] = useState("25.89");
 
@@ -51,6 +58,9 @@ export default function Home() {
       finalAmount >= minFinalAmount &&
       years >= minYears
     ) {
+      setInvested(initialAmount.toLocaleString("en-In"));
+      setFinalInvest(finalAmount.toLocaleString("en-In"));
+      setGains((finalAmount - initialAmount).toLocaleString("en-In"));
       CAGR = (Math.pow(finalAmount / initialAmount, 1 / years) - 1) * 100;
       if (CAGR === Infinity || isNaN(CAGR)) {
         setOutput("-");
@@ -191,13 +201,9 @@ export default function Home() {
                       }
                     >
                       Investment of{" "}
-                      <span className={"font-semibold"}>
-                        Rs.{initialAmount.toLocaleString("en-In")}
-                      </span>{" "}
+                      <span className={"font-semibold"}>Rs.{invested}</span>{" "}
                       grew to{" "}
-                      <span className={"font-semibold"}>
-                        Rs.{finalAmount.toLocaleString("en-In")}
-                      </span>{" "}
+                      <span className={"font-semibold"}>Rs.{finalInvest}</span>{" "}
                       at the end of{" "}
                       <span className={"font-semibold"}>{years}</span> years.
                     </div>
@@ -213,14 +219,12 @@ export default function Home() {
                       <ChartFooterElement
                         id={"invested"}
                         label={"Invested"}
-                        value={initialAmount.toLocaleString("en-In")}
+                        value={invested}
                       />
                       <ChartFooterElement
                         id={"gains"}
                         label={"Gains"}
-                        value={(finalAmount - initialAmount).toLocaleString(
-                          "en-In"
-                        )}
+                        value={gains}
                       />
                     </div>
                   </>
