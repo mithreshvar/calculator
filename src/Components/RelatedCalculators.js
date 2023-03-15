@@ -1,14 +1,15 @@
-import RelatedCalculatorElement from "@/Components/RelatedCalculatorElement.jsx";
+import RelatedCalculatorElement from "@/Components/RelatedCalculatorElement.js";
 
 export default function RelatedCalculators({ contents }) {
 
-    function addRelatedCalculatorElement(element, i) {
+    function addRelatedCalculatorElement(element, index) {
 
         return (
             <RelatedCalculatorElement
+                key={`relatedCalculator${index}`}
                 name={element[0]}
                 path={element[1]}
-                first={(i === 0) ? true : false}
+                first={(index === 0) ? true : false}
             />
         );
     }

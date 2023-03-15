@@ -10,6 +10,7 @@ export default function Chart({ points }) {
             styleMode: true,
             backgroundColor: 'transparent',
             height: '220px',
+
             style: {
                 fontFamily: 'poppins',
                 fontSize: '12px',
@@ -81,6 +82,7 @@ export default function Chart({ points }) {
             backgroundColor: '#FFFFFF',
             borderColor: '#FFFFFF',
             borderRadius: 20,
+            outside: true,
             style: {
                 color: '#000000',
                 fontSize: '12px',
@@ -112,8 +114,11 @@ export default function Chart({ points }) {
                         borderColor: '#FFFFFF',
                         borderRadius: 20,
                         style: {
+                            display: 'flex',
                             color: '#000000',
                             fontSize: '14px',
+                            zIndex: '90',
+                            position: 'absolute',
                         },
                         formatter() {
                             return `Amount <strong>\u20B9 ${Number(this.y.toFixed(0)).toLocaleString("en-In")}</strong> <br> Year <strong> ${this.x} </strong>`

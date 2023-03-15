@@ -1,4 +1,4 @@
-import ControlBox from "../Components/ControlBox.jsx";
+import ControlBox from "./ControlBox.js";
 
 export default function Calculator({ children, calculate }) {
 

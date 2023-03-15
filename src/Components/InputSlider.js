@@ -1,10 +1,10 @@
-import styles from '@/styles/Input.module.css'
+import styles from '@/styles/Input.module.scss'
 import { useState } from 'react';
 export default function Input({ id, type = '', min = 0, max, step = 1, value, setValue }) {
 
 
     const [textValue, setTextValue] = useState(((type === 'rupees') ? '\u20B9' : '') + Number(value).toLocaleString("en-In") + ((type === 'percentage') ? '%' : ''));
-
+    const [raiseMaxError, setRaiseMaxError] = useState(false);
 
     const handleSliderValue = (event) => {
         let tempValue = event.target.value;
@@ -15,6 +15,7 @@ export default function Input({ id, type = '', min = 0, max, step = 1, value, se
 
 
     const addSymbol = (event) => {
+        setRaiseMaxError(false);
         let tempValue = event.target.value;
         if (!(String(textValue).charAt(0) == '\u20B9')) {
             tempValue = ((type === 'rupees') ? '\u20B9' : '') + Number(tempValue).toLocaleString("en-In");
@@ -35,6 +36,13 @@ export default function Input({ id, type = '', min = 0, max, step = 1, value, se
     const handleTextValue = (event) => {
 
         let tempValue = event.target.value;
+        console.log(event.target.value)
+        if (event.target.value > max) {
+            setRaiseMaxError(true);
+        }
+        else {
+            setRaiseMaxError(false);
+        }
         if ((!(isNaN(tempValue)) && tempValue > 0 && tempValue <= max) || tempValue == '' || tempValue == '0') {
 
             if (tempValue == "") {
@@ -43,7 +51,12 @@ export default function Input({ id, type = '', min = 0, max, step = 1, value, se
             else if (tempValue.length == 2 && tempValue.charAt(0) == '0') {
                 tempValue = tempValue.charAt(1);
             }
-            setTextValue(tempValue);
+            if (!(type === 'percentage')) {
+                setTextValue(Number(tempValue));
+            }
+            else {
+                setTextValue(tempValue);
+            }
             setValue(Number(tempValue));
         }
 
@@ -62,7 +75,7 @@ export default function Input({ id, type = '', min = 0, max, step = 1, value, se
                         value={value}
                         id={id}
                         onChange={handleSliderValue}
-                        className={'my-4 accent-[#00D382] bg-transparent flex '}
+                        className={'my-4 accent-[#00D382] flex '}
                     />
                 </div>
                 <div className=' w-[39%] lg:ml-[25px]   '>
@@ -79,7 +92,7 @@ export default function Input({ id, type = '', min = 0, max, step = 1, value, se
                     />
                 </div>
             </div>
-            {(value < min) ? <div className=' text-red-600 text-sm font-normal -mt-[7px] -mb-[13px]'>minimum value is {min}.</div> : ''}
+            {(value < min) ? <div className=' text-red-600 text-sm font-normal -mt-[8px] -mb-[12px]'>minimum value is {min.toLocaleString('en-In')}.</div> : (raiseMaxError) ? <div className=' text-red-600 text-sm font-normal -mt-[8px] -mb-[12px]'>maximum value is {max.toLocaleString('en-In')}.</div> : ''}
         </div>
     )
 }

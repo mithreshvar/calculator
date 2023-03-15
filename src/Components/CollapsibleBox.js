@@ -31,8 +31,8 @@ export default function CollapsibleBox({ heading, headingBold = false, content, 
   return (
     <>
       <Collapsible
-        trigger={[heading, <HiOutlineChevronDown style={{ flexShrink: 0, color: '#005CFF', width: '18px', height: '18px' }} />]}
-        triggerWhenOpen={[heading, <HiOutlineChevronUp style={{ flexShrink: 0, color: '#005CFF', width: '18px', height: '18px' }} />]}
+        trigger={[heading, <HiOutlineChevronDown key={'downIcon'} style={{ flexShrink: 0, color: '#005CFF', width: '18px', height: '18px' }} />]}
+        triggerWhenOpen={[heading, <HiOutlineChevronUp key={'upIcon'} style={{ flexShrink: 0, color: '#005CFF', width: '18px', height: '18px' }} />]}
         triggerStyle={style}
       >
         <div className={contentStyle}>{content}</div>

@@ -1,17 +1,23 @@
+/* eslint-disable react/jsx-key */
+/* eslint-disable @next/next/no-page-custom-font */
+/* eslint-disable @next/next/no-css-tags */
+/* eslint-disable react/no-unescaped-entities */
+/* eslint-disable react/jsx-no-comment-textnodes */
+
 import Head from "next/head";
 import { useState } from "react";
-import Heading from "../Components/Heading.jsx";
+import Heading from "../Components/Heading.js";
 
-import InputSlider from "../Components/InputSlider.jsx";
-import Subheading from "../Components/Subheading.jsx";
-import CalculatorAndSidePannel from "../Components/CalculatorAndSidePannel.jsx";
-import CalculatorWrapper from "../Components/CalculatorWrapper.jsx";
-import Calculator from "../Components/Calculator.jsx";
-import InputBoxWrapper from "../Components/InputBoxWrapper.jsx";
-import InfoBox from "../Components/InfoBox.jsx";
+import InputSlider from "../Components/InputSlider.js";
+import Subheading from "../Components/Subheading.js";
+import CalculatorAndSidePannel from "../Components/CalculatorAndSidePannel.js";
+import CalculatorWrapper from "../Components/CalculatorWrapper.js";
+import Calculator from "../Components/Calculator.js";
+import InputBoxWrapper from "../Components/InputBoxWrapper.js";
+import InfoBox from "../Components/InfoBox.js";
 
-import UnorderedList from "../Components/UnorderedList.jsx";
-import RelatedCalculators from "@/Components/RelatedCalculators.jsx";
+import UnorderedList from "../Components/UnorderedList.js";
+import RelatedCalculators from "../Components/RelatedCalculators.js";
 
 export default function Home() {
   const [monthlySalary, setMonthlySalary] = useState(70000);
@@ -27,7 +33,7 @@ export default function Home() {
   }
 
   return (
-    <>
+    <div className={"app—bg—container overflow—hidden"}>
       <Head>
         <title>Gratuity calculator</title>
         <link rel="icon" href="./logo.png" />
@@ -52,7 +58,7 @@ export default function Home() {
 
       <main
         className={
-          "relative [@media(max-width:470px)]:p-5 [@media(max-width:1280px)]:p-10 xl:p-20 w-full overflow-x-hidden flex-col justify-between text-[#464143] font-['poppins'] leading-[18px]"
+          "relative [@media(max-width:470px)]:px-[20px] [@media(max-width:1280px)]:px-[40px] xl:px-[80px] pt-[108px] py-[50px] w-full overflow-x-hidden flex-col justify-between text-[#464143] font-['poppins'] leading-[18px] [@media(min-width:1920px)]:leading-[22px] "
         }
       >
         <div>
@@ -63,7 +69,7 @@ export default function Home() {
           <Subheading>
             Gratuity is a benefit given by an employer to an employee as a token
             of appreciation for their service and loyalty. It is typically
-            calculated as a certain percentage of an employee’s salary, based on
+            calculated as a certain percentage of an employee&#39;s salary, based on
             the number of years they have worked for the company. The gratuity
             amount is paid to the employee upon the completion of a certain
             period of service or upon retirement, and is meant to provide
@@ -134,6 +140,7 @@ export default function Home() {
                 ],
                 [
                   "Tax implications of gratuity",
+                  // eslint-disable-next-line react/jsx-key
                   <div className={" space-y-3"}>
                     <div>
                       Gratuity paid by the government to government employees is
@@ -163,10 +170,11 @@ export default function Home() {
               <>
                 <div>
                   Gratuity is a benefit given by an employer to an employee as a
-                  token of appreciation for their service and loyalty. It is
-                  typically calculated as a certain percentage of an employee's
-                  salary, based on the number of years they have worked for the
-                  company. The gratuity amount is paid to the employee upon the
+                  token of appreciation for their service and loyalty. It is //
+                  eslint-disable-next-line react/no-unescaped-entities typically
+                  calculated as a certain percentage of an employee's salary,
+                  based on the number of years they have worked for the company.
+                  The gratuity amount is paid to the employee upon the
                   completion of a certain period of service or upon retirement,
                   and is meant to provide financial security for the employee in
                   their later years.
@@ -201,11 +209,12 @@ export default function Home() {
             ],
             [
               "How does the Gratuity calculator work?",
-              <div className="space-y-3">
+              <div className="space-y-3" key=''>
                 <div>It uses the following logic</div>
                 <UnorderedList
+                  key=''
                   content={[
-                    <div className="flex-col space-y-2">
+                    <div className="flex-col space-y-2" key=''>
                       <div>
                         The amount of gratuity for employees whose employer is
                         covered under the Gratuity Act can be calculated using
@@ -271,6 +280,6 @@ export default function Home() {
           ]}
         />
       </main>
-    </>
+    </div>
   );
 }

@@ -1,22 +1,24 @@
+/* eslint-disable @next/next/no-page-custom-font */
+/* eslint-disable @next/next/no-css-tags */
+
 import Head from "next/head";
-import Image from "next/image";
 import { useState } from "react";
 
-import Heading from "../Components/Heading.jsx";
-import Subheading from "../Components/Subheading.jsx";
-import CalculatorAndSidePannel from "../Components/CalculatorAndSidePannel.jsx";
-import CalculatorWrapper from "../Components/CalculatorWrapper.jsx";
-import Calculator from "../Components/Calculator.jsx";
-import InputBoxWrapper from "../Components/InputBoxWrapper.jsx";
-import ChartToggle from "../Components/ChartToggle.jsx";
-import InfoBox from "../Components/InfoBox.jsx";
-import ChartFooterElement from "../Components/ChartFooterElement.jsx";
+import Heading from "../Components/Heading.js";
+import Subheading from "../Components/Subheading.js";
+import CalculatorAndSidePannel from "../Components/CalculatorAndSidePannel.js";
+import CalculatorWrapper from "../Components/CalculatorWrapper.js";
+import Calculator from "../Components/Calculator.js";
+import InputBoxWrapper from "../Components/InputBoxWrapper.js";
+import ChartToggle from "../Components/ChartToggle.js";
+import InfoBox from "../Components/InfoBox.js";
+import ChartFooterElement from "../Components/ChartFooterElement.js";
 
-import InputSlider from "../Components/InputSlider.jsx";
-import UnorderedList from "../Components/UnorderedList.jsx";
-import LineChart from "../Components/LineChart.jsx";
-import DoughnutChart from "@/Components/DoughnutChart.jsx";
-import RelatedCalculators from "@/Components/RelatedCalculators.jsx";
+import InputSlider from "../Components/InputSlider.js";
+import UnorderedList from "../Components/UnorderedList.js";
+import LineChart from "../Components/LineChartCagr.js";
+import DoughnutChart from "../Components/DoughnutChartCagr.js";
+import RelatedCalculators from "../Components/RelatedCalculators.js";
 
 export default function Home() {
   const [initialAmount, setInitialAmount] = useState(100000);
@@ -24,11 +26,11 @@ export default function Home() {
   const [years, setYears] = useState(10);
 
   const minInitialAmount = 1000;
-  const maxInitialAmount = 10000000;
+  const maxInitialAmount = 100000000;
   const stepInitialAmount = 100;
 
   const minFinalAmount = 1000;
-  const maxFinalAmount = 10000000;
+  const maxFinalAmount = 500000000;
   const stepFinalAmount = 100;
 
   const minYears = 1;
@@ -39,8 +41,10 @@ export default function Home() {
   {
     /* Display variables */
   }
-  const [invested, setInvested] = useState("1,00,000");
-  const [finalInvest, setFinalInvest] = useState("10,00,000");
+  const [invested, setInvested] = useState(100000);
+  const [finalInvest, setFinalInvest] = useState(1000000);
+  const [investedString, setInvestedString] = useState("1,00,000");
+  const [finalInvestString, setFinalInvestString] = useState("10,00,000");
   const [gains, setGains] = useState("9,00,000");
   const [absoluteReturns, setAbsoluteReturns] = useState(900);
   const [output, setOutput] = useState("25.89");
@@ -58,8 +62,10 @@ export default function Home() {
       finalAmount >= minFinalAmount &&
       years >= minYears
     ) {
-      setInvested(initialAmount.toLocaleString("en-In"));
-      setFinalInvest(finalAmount.toLocaleString("en-In"));
+      setInvested(initialAmount);
+      setFinalInvest(finalAmount);
+      setInvestedString(initialAmount.toLocaleString("en-In"));
+      setFinalInvestString(finalAmount.toLocaleString("en-In"));
       setGains((finalAmount - initialAmount).toLocaleString("en-In"));
       CAGR = (Math.pow(finalAmount / initialAmount, 1 / years) - 1) * 100;
       if (CAGR === Infinity || isNaN(CAGR)) {
@@ -87,7 +93,7 @@ export default function Home() {
   }
 
   return (
-    <>
+    <div className={"app—bg—container overflow—hidden"}>
       <Head>
         <title>CAGR calculator</title>
         <link rel="icon" href="./logo.png" />
@@ -112,7 +118,7 @@ export default function Home() {
 
       <main
         className={
-          "relative [@media(max-width:470px)]:px-[20px] [@media(max-width:1280px)]:px-[40px] xl:px-[80px] py-[50px] w-full overflow-x-hidden flex-col justify-between text-[#464143] font-['poppins'] leading-[18px] [@media(min-width:1920px)]:leading-[22px] "
+          "relative [@media(max-width:470px)]:px-[20px] [@media(max-width:1280px)]:px-[40px] xl:px-[80px] pt-[108px] py-[50px] w-full overflow-x-hidden flex-col justify-between text-[#464143] font-['poppins'] leading-[18px] [@media(min-width:1920px)]:leading-[22px] "
         }
       >
         <div>
@@ -123,7 +129,7 @@ export default function Home() {
           <Subheading>
             CAGR stands for Compound Annual Growth Rate, which is a commonly
             used financial metric to measure the average growth rate of an
-            investment over a specified period of time. It’s calculated as the
+            investment over a specified period of time. It&#39;s calculated as the
             average rate of return that would have to be compounded annually to
             reach the final value from the initial value over the given time
             period. CAGR is expressed as a percentage and it is useful in
@@ -200,26 +206,43 @@ export default function Home() {
                         "mb-3 text-[14px] [@media(min-width:1920px)]:text-[18px] font-normal "
                       }
                     >
-                      Investment of{" "}
-                      <span className={"font-semibold"}>Rs.{invested}</span>{" "}
-                      grew to{" "}
-                      <span className={"font-semibold"}>Rs.{finalInvest}</span>{" "}
-                      at the end of{" "}
-                      <span className={"font-semibold"}>{years}</span> years.
+                      {
+                        (invested < finalInvest) ?
+                          <>
+                            Investment of{" "}
+                            <span className={"font-semibold"}>Rs.{investedString}</span>{" "}
+                            grew to{" "}
+                            <span className={"font-semibold"}>Rs.{finalInvestString}</span>{" "}
+                            at the end of{" "}
+                            <span className={"font-semibold"}>{years}</span> years.
+                          </>
+                          : (invested === finalInvest) ?
+                            <>
+                              There is no growth observed form <span className={"font-semibold"}>Rs.{investedString}</span> in the <span className={"font-semibold"}>{years}</span> year period.
+                            </>
+                            :
+                            <>Investment of{" "}
+                              <span className={"font-semibold"}>Rs.{investedString}</span>{" "}
+                              declined to{" "}
+                              <span className={"font-semibold"}>Rs.{finalInvestString}</span>{" "}
+                              at the end of{" "}
+                              <span className={"font-semibold"}>{years}</span> years.
+                            </>
+                      }
                     </div>
                   </>
                 ) : (
                   <>
                     <DoughnutChart
                       initialInvestment={initialAmount}
-                      finalInvestment={finalAmount}
+                      gains={finalAmount - initialAmount}
                       dependency={output}
                     />
                     <div>
                       <ChartFooterElement
                         id={"invested"}
                         label={"Invested"}
-                        value={invested}
+                        value={investedString}
                       />
                       <ChartFooterElement
                         id={"gains"}
@@ -286,7 +309,7 @@ export default function Home() {
             ],
             [
               "How does the calculator work?",
-              <div className=" space-y-[8px] ">
+              <div className=" space-y-[8px] " key={'cagrFormula'}>
                 <div className="mb-[10px]">It uses the following logic</div>
 
                 <div className={"font-semibold flex items-center "}>
@@ -347,6 +370,7 @@ export default function Home() {
             [
               "What are the advantages of calculating CAGR?",
               <UnorderedList
+                key=''
                 content={[
                   "Future projections: By using the CAGR of an investment, you can make projections about what the future value of your investment might be, based on past performance. This can be helpful in making investment decisions or setting financial goals.",
                   "Investment performance evaluation: CAGR helps you to evaluate the performance of your investment over a specified period of time. It provides a clear picture of the growth or decline of your investment, which can help you make informed decisions about your investments.",
@@ -375,6 +399,6 @@ export default function Home() {
           ]}
         />
       </main>
-    </>
+    </div>
   );
 }
