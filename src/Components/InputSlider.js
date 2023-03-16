@@ -85,8 +85,8 @@ export default function Input({ id, type = '', min = 0, max, step = 1, value, se
                         id={`${id}Label`}
                         min={min}
                         max={max}
-                        onBlur={(type === '') ? null : addSymbol}
-                        onFocus={(type === '') ? null : removeSymbol}
+                        onBlur={addSymbol}
+                        onFocus={removeSymbol}
                         className={'h-[45px] w-full color-[#1B1C20] bg-[#D1E3FF] bg-opacity-[0.39] border-2 border-solid border-[#9BB0D3] rounded-[100px] text-center text-[14px] font-semibold [@media(min-width:1920px)]:text-[18px] '}
                         onChange={handleTextValue}
                     />
