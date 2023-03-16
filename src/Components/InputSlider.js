@@ -92,7 +92,7 @@ export default function Input({ id, type = '', min = 0, max, step = 1, value, se
                     />
                 </div>
             </div>
-            {(value < min) ? <div className=' text-red-600 text-sm font-normal -mt-[8px] -mb-[12px]'>minimum value is {min.toLocaleString('en-In')}.</div> : (raiseMaxError) ? <div className=' text-red-600 text-sm font-normal -mt-[8px] -mb-[12px]'>maximum value is {max.toLocaleString('en-In')}.</div> : ''}
+            {(value < min) ? <div className=' text-[#FF7D7D] text-sm font-normal -mt-[8px] -mb-[12px]'>minimum value is {min.toLocaleString('en-In')}.</div> : (raiseMaxError) ? <div className=' text-[#FF7D7D] text-sm font-normal -mt-[8px] -mb-[12px]'>maximum value is {max.toLocaleString('en-In')}.</div> : ''}
         </div>
     )
 }

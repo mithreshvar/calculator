@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-page-custom-font */
 /* eslint-disable @next/next/no-css-tags */
+/* eslint-disable react/jsx-key */
 
 import Head from "next/head";
 import { useState } from "react";

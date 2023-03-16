@@ -1,4 +1,4 @@
-import CollapsibleBox from "@/Components/CollapsibleBox.js";
+import CollapsibleBox from "../Components/CollapsibleBox.js";
 
 export default function InfoBox({ type = '', contents }) {
 
